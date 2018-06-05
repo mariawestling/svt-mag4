@@ -3,13 +3,32 @@
 <head>
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
   <title>Kassa SVT Mag4</title>
 </head>
   <body>
-    HEJ
-    DÅ
+    <div class="header">
+      <div class="pageTitle">
+        Startsida
+      </div>
+      <div class="header-icons">
+        <button class="far fa-question-circle iconbuttons"></button>
+        <button class="fas fa-bars iconbuttons"></button>
+      </div>
+    </div>
+    <div class="navOptions">
+      <button onClick="handleClick('renting.html')" class="btn btn-primary navButton">UTHYRNING</button>
+      <button onClick="handleClick('returns.html')" class="btn btn-primary navButton">RETURER</button>
+      <button onClick="handleClick('objects.html')" class="btn btn-primary navButton">OBJEKTREGISTER</button>
+      <button onClick="handleClick('customers.html')" class="btn btn-primary navButton">KUNDREGISTER</button>
+    </div>
   </body>
+  <script>
+    function handleClick(whereTo) {
+      location.href = whereTo;
+    }
+  </script>
 </html>
