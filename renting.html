@@ -20,7 +20,7 @@
 </head>
   <body>
     <div class="header">
-      <button class="fas fa-home iconbuttons"></button>
+      <button class="fas fa-home iconbuttons" onClick="handleClick('index.html')"></button>
       <div class="pageTitle">
         Uthyrning
       </div>
@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="renting-options">
-        <button class="btn btn-primary active">Ny följesedel</button>
-        <button class="btn btn-primary">Följesedlar</button>
+        <button class="btn btn-primary active" id="oneFolje" onClick="oneRenting()">Ny följesedel</button>
+        <button class="btn btn-primary" id="allFolje" onClick="allRenting()">Följesedlar</button>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Företag</div>
@@ -65,55 +65,189 @@
         </ul>
       </div>
     </div>
-    <div class="renting-slips">
-      <div class="renting-label">Beräknad retur</div>
-      <form action="">
-        <input id="date" type="date">
-        </input>
-      </form>
+    <div class="nothingCSS" id="showAll">
+      <div class="renting-slips">
+        <div class="renting-label">Beräknad retur</div>
+        <form action="">
+          <input id="date" type="date">
+          </input>
+        </form>
+      </div>
+      <div id="renting-items" class="hidden">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Kategori</th>
+              <th scope="col">Prisgrupp</th>
+              <th scope="col">Bild</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Soffor</td>
+              <td class="center">9</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Stolar</td>
+              <td class="center">5</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Mattor</td>
+              <td class="center">7</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="other-damages" class="hidden">
+        <div class="damages">Övrigt / Skador</div>
+        <textarea></textarea>
+      </div>
+      <div class="items-options">
+        <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
+        <button class="renting-butts manual" onClick="addManually()">Lägg till Manuellt</button>
+      </div>
+      <div class="items-options">
+        <button class="renting-butts save" onClick="saveFoljesedel()">Spara</button>
+      </div>
     </div>
-    <div id="renting-items" class="hidden">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Prisgrupp</th>
-            <th scope="col">Bild</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Soffor</td>
-            <td class="center">9</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Stolar</td>
-            <td class="center">5</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Skyltar</td>
-            <td class="center">7</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div id="other-damages" class="hidden">
-      <div class="damages">Övrigt / Skador</div>
-      <textarea></textarea>
-    </div>
-    <div class="items-options">
-      <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
-      <button class="renting-butts manual" onClick="addManually()">Lägg till Manuellt</button>
-    </div>
-    <div class="items-options">
-      <button class="renting-butts save">Spara</button>
+    <div class="foljesedlar-info hidden" id="allRents">
+      <div class="foljesedlar-choices">
+        <button class="btn btn-primary" id="foljesedel-change">Ändra följesedel</button>
+        <button class="btn btn-primary" id="foljesedel-return">Registrera retur</button>
+      </div>
+      <div class="foljesedlar-company">
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2018-06-28
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              3 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            350 kr
+            </div>
+          </div>
+          <div class="foljesedlar-avdelning">
+            <div class="foljesedel-header">MÖBEL</div>
+            <table class="table table-foljesedlar">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Prisgrupp</th>
+                    <th scope="col">Bild</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Soffor</td>
+                    <td class="center">9</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Stolar</td>
+                    <td class="center">5</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="foljesedlar-avdelning">
+            <div class="foljesedel-header">REKVISITA</div>
+            <table class=" table table-foljesedlar">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Prisgrupp</th>
+                  <th scope="col">Bild</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3</td>
+                  <td>Mattor</td>
+                  <td class="center">7</td>
+                  <td class="image"><i class="far fa-image"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Tillbaka 2017-11-11
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              15 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            3500 kr
+            </div>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2017-09-17
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              8 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            800 kr
+            </div>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2016-06-07
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              12 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            2400 kr
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </body>
@@ -143,7 +277,42 @@
     }
 
     function addManually() {
+      swal({
+        title: "Lägg till objekt manuellt",
+        text: "Alla parametrar för att lägga till objekt ska in här.",
+        button: "Avbryt"
+      })
+    }
 
+    function allRenting(){
+      var hides = document.getElementById('showAll');
+      hides.className += ' hidden';
+
+      var show = document.getElementById('allRents');
+      show.className = show.className.replace(" hidden", "");
+    }
+
+    function handleClick(whereTo) {
+      location.href = whereTo;
+    }
+
+    function oneRenting() {
+      var oneRents = document.getElementById('showAll');
+      oneRents.className = oneRents.className.replace(" hidden", "");
+
+      var hideRents = document.getElementById('allRents');
+      hideRents.className += " hidden";
+
+    }
+
+    function saveFoljesedel() {
+      $("#allFolje").click();
+
+      var butt1 = document.getElementById('oneFolje');
+      butt1.className = butt1.className.replace(" active", "");
+
+      var butt2 = document.getElementById('allFolje');
+      butt2.className += " active";
     }
   </script>
 </html>
