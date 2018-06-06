@@ -77,39 +77,43 @@ button.fa-home {
   justify-content: left;
   width: 100%;
   flex-wrap: wrap;
+  margin-bottom: 6px;
 }
 .renting-label {
-  width: 25%;
+  width: 27%;
   margin-left: 3.7%;
   font-size: 2.5em;
   font-weight: lighter;
 }
+.dropdown {
+  width: 66%;
+}
 
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1em;
-  width: 67%;
+.dropdown-menu {
+  width: 100%;
+  font-size: 24px;
 }
 
 input {
   width: 100%;
-  padding: 0.01em 0.01em 0.01em 0.01em;
+  padding: 0.001em 0.001em 0.001em 0.001em;
   background-color: #ECEFF1;
   font-size: 3em;
   border-style: none;
   text-align: left;
   color: black;
   font-weight: lighter;
+  margin: 0px;
 }
 
 input::placeholder {
   font-weight: lighter;
   text-align: left;
-  color: black;
+  text-indent: 10px;
+  color: black !important;
   opacity: none;
 }
+
 
 input#date {
   font-weight: lighter;

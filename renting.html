@@ -29,56 +29,37 @@
         <button class="btn btn-primary active">Ny följesedel</button>
         <button class="btn btn-primary">Följesedlar</button>
     </div>
-    <div class="container">
+    <div class="renting-slips">
+      <div class="renting-label">Företag</div>
       <div class="dropdown">
-        <input class="btn btn-primary dropdown-toggle" style="margin: 0px;" id="dropdownButton" data-toggle="dropdown" value="Välj företag..."></input>
+        <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj företag..."></input>
         <ul class="dropdown-menu">
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">HTML</a></li>
+          <li onClick="companyChoice('Anderssons Event')">Anderssons Event</li>
+          <li onClick="companyChoice('Gröna Lund Event')">Gröna Lund Event</li>
+          <li onClick="companyChoice('Sveriges Television')">Sveriges Television</li>
         </ul>
       </div>
     </div>
-
-    <div class="renting-slips">
-
-
-      <div class="renting-label">Företag</div>
-      <form action="">
-        <input list="companies" name="company">
-          <datalist id="companies">
-            <option value="Anderssons Event">
-            <option value="Gröna Lund Event">
-            <option value="Lisseberg Event">
-            <option value="Sveriges Television">
-            <option value="Åkerby Teater">
-          </datalist>
-        </input>
-      </form>
-    </div>
     <div class="renting-slips">
       <div class="renting-label">Produktion</div>
-      <form action="">
-        <input list="productions" name="production">
-          <datalist id="productions">
-            <option value="5849 39403">
-            <option value="0390 48290">
-            <option value="7392 29482">
-          </datalist>
-        </input>
-      </form>
+      <div class="dropdown">
+        <input class="" style="margin: 0px;" id="productionButton" data-toggle="dropdown" placeholder="Välj produktion..."></input>
+        <ul class="dropdown-menu">
+          <li onClick="productionChoice('5492-49202')">5492-49202</li>
+          <li onClick="productionChoice('4720-38200')">4720-38200</li>
+          <li onClick="productionChoice('7392-39208')">7392-39208</li>
+        </ul>
+      </div>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Kontaktperson</div>
-      <form action="">
-        <input list="contacts" name="contact">
-          <datalist id="contacts">
-            <option value="Liselott Grönberg">
-            <option value="Allan Larsson">
-          </datalist>
-        </input>
-      </form>
+      <div class="dropdown">
+        <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
+        <ul class="dropdown-menu">
+          <li onClick="companyChoice('Liselotte Andersson')">Liselotte Andersson</li>
+          <li onClick="companyChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
+        </ul>
+      </div>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Beräknad retur</div>
@@ -139,7 +120,22 @@
 
       var y = document.getElementById('other-damages');
       y.className = x.className.replace("hidden", "");
+    }
 
+    function companyChoice(company) {
+      var compButton = document.getElementById('companyButton');
+      compButton.placeholder = compButton.placeholder.replace("Välj företag...", company);
+      console.log(compButton.placeholder);
+    }
+
+    function productionChoice(prodnr) {
+      var prodButton = document.getElementById('productionButton');
+      prodButton.placeholder = prodButton.placeholder.replace("Välj produktion...", prodnr);
+    }
+
+    function contactChoice(contact) {
+      var contButton = document.getElementById('contactButton');
+      contButton.placeholder = contButton.placeholder.replace("Välj kontaktperson...", contact);
     }
   </script>
 </html>
