@@ -5,15 +5,22 @@
 
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="renting-style.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+  <!-- Sweet Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <title>Renting</title>
 </head>
   <body>
     <div class="header">
-      <button class="fas fa-home iconbuttons"></button>
+      <button class="fas fa-home iconbuttons" onClick="handleClick('index.html')"></button>
       <div class="pageTitle">
         Uthyrning
       </div>
@@ -23,95 +30,229 @@
       </div>
     </div>
     <div class="renting-options">
-        <button class="btn btn-primary active">Ny följesedel</button>
-        <button class="btn btn-primary">Följesedlar</button>
+        <button class="btn btn-primary active" id="oneFolje" onClick="oneRenting()">Ny följesedel</button>
+        <button class="btn btn-primary" id="allFolje" onClick="allRenting()">Följesedlar</button>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Företag</div>
-      <form action="">
-        <input list="companies" name="company">
-          <datalist id="companies">
-            <option value="Anderssons Event">
-            <option value="Gröna Lund Event">
-            <option value="Lisseberg Event">
-            <option value="Sveriges Television">
-            <option value="Åkerby Teater">
-          </datalist>
-        </input>
-      </form>
+      <div class="dropdown">
+        <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj företag..."></input>
+        <ul class="dropdown-menu">
+          <li onClick="companyChoice('Anderssons Event')">Anderssons Event</li>
+          <li onClick="companyChoice('Gröna Lund Event')">Gröna Lund Event</li>
+          <li onClick="companyChoice('Sveriges Television')">Sveriges Television</li>
+        </ul>
+      </div>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Produktion</div>
-      <form action="">
-        <input list="productions" name="production">
-          <datalist id="productions">
-            <option value="5849 39403">
-            <option value="0390 48290">
-            <option value="7392 29482">
-          </datalist>
-        </input>
-      </form>
+      <div class="dropdown">
+        <input class="" style="margin: 0px;" id="productionButton" data-toggle="dropdown" placeholder="Välj produktion..."></input>
+        <ul class="dropdown-menu">
+          <li onClick="productionChoice('5492-49202')">5492-49202</li>
+          <li onClick="productionChoice('4720-38200')">4720-38200</li>
+          <li onClick="productionChoice('7392-39208')">7392-39208</li>
+        </ul>
+      </div>
     </div>
     <div class="renting-slips">
       <div class="renting-label">Kontaktperson</div>
-      <form action="">
-        <input list="contacts" name="contact">
-          <datalist id="contacts">
-            <option value="Liselott Grönberg">
-            <option value="Allan Larsson">
-          </datalist>
-        </input>
-      </form>
+      <div class="dropdown">
+        <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
+        <ul class="dropdown-menu">
+          <li onClick="contactChoice('Liselotte Andersson')">Liselotte Andersson</li>
+          <li onClick="contactChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
+        </ul>
+      </div>
     </div>
-    <div class="renting-slips">
-      <div class="renting-label">Beräknad retur</div>
-      <form action="">
-        <input id="date" type="date">
-        </input>
-      </form>
+    <div class="nothingCSS" id="showAll">
+      <div class="renting-slips">
+        <div class="renting-label">Beräknad retur</div>
+        <form action="">
+          <input id="date" type="date">
+          </input>
+        </form>
+      </div>
+      <div id="renting-items" class="hidden">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Kategori</th>
+              <th scope="col">Prisgrupp</th>
+              <th scope="col">Bild</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Soffor</td>
+              <td class="center">9</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Stolar</td>
+              <td class="center">5</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Mattor</td>
+              <td class="center">7</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="other-damages" class="hidden">
+        <div class="damages">Övrigt / Skador</div>
+        <textarea></textarea>
+      </div>
+      <div class="items-options">
+        <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
+        <button class="renting-butts manual" onClick="addManually()">Lägg till Manuellt</button>
+      </div>
+      <div class="items-options">
+        <button class="renting-butts save" onClick="saveFoljesedel()">Spara</button>
+      </div>
     </div>
-    <div id="renting-items" class="hidden">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Prisgrupp</th>
-            <th scope="col">Bild</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Soffor</td>
-            <td class="center">9</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Stolar</td>
-            <td class="center">5</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Skyltar</td>
-            <td class="center">7</td>
-            <td class="image"><i class="far fa-image"></i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div id="other-damages" class="hidden">
-      <div class="damages">Övrigt / Skador</div>
-      <textarea></textarea>
-    </div>
-    <div class="items-options">
-      <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
-      <button class="renting-butts manual">Lägg till Manuellt</button>
-    </div>
-    <div class="items-options">
-      <button class="renting-butts save">Spara</button>
+    <div class="foljesedlar-info hidden" id="allRents">
+      <div class="foljesedlar-choices">
+        <button class="btn btn-primary" id="foljesedel-change">Ändra följesedel</button>
+        <button class="btn btn-primary" id="foljesedel-return">Registrera retur</button>
+      </div>
+      <div class="foljesedlar-company">
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2018-06-28
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              3 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            350 kr
+            </div>
+          </div>
+          <div class="foljesedlar-avdelning">
+            <div class="foljesedel-header">MÖBEL</div>
+            <table class="table table-foljesedlar">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Prisgrupp</th>
+                    <th scope="col">Hyra</th>
+                    <th scope="col">Bild</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Soffor</td>
+                    <td class="center">9</td>
+                    <td>200</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Stolar</td>
+                    <td class="center">5</td>
+                    <td>50</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="foljesedlar-avdelning">
+            <div class="foljesedel-header">REKVISITA</div>
+            <table class=" table table-foljesedlar">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Prisgrupp</th>
+                  <th scope="col">Hyra</th>
+                  <th scope="col">Bild</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3</td>
+                  <td>Mattor</td>
+                  <td class="center">7</td>
+                  <td>100</td>
+                  <td class="image"><i class="far fa-image"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Tillbaka 2017-11-11
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              15 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            3500 kr
+            </div>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2017-09-17
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              8 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            800 kr
+            </div>
+          </div>
+        </div>
+        <div class="foljesedel">
+          <div class="foljesedel-info">
+            <div class="foljesedel-info-detaljer">
+              Retur 2016-06-07
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+            |
+            </div>
+            <div class="foljesedel-info-detaljer">
+              12 artiklar
+            </div>
+            <div class="foljesedel-info-detaljer-odd">
+              |
+            </div>
+            <div class="foljesedel-info-detaljer">
+            2400 kr
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </body>
@@ -122,7 +263,66 @@
 
       var y = document.getElementById('other-damages');
       y.className = x.className.replace("hidden", "");
+    }
 
+    function companyChoice(company) {
+      var compButton = document.getElementById('companyButton');
+      compButton.placeholder = compButton.placeholder.replace("Välj företag...", company);
+      console.log(compButton.placeholder);
+    }
+
+    function productionChoice(prodnr) {
+      var prodButton = document.getElementById('productionButton');
+      prodButton.placeholder = prodButton.placeholder.replace("Välj produktion...", prodnr);
+    }
+
+    function contactChoice(contact) {
+      var contButton = document.getElementById('contactButton');
+      contButton.placeholder = contButton.placeholder.replace("Välj kontaktperson...", contact);
+    }
+
+    function addManually() {
+      swal({
+        title: "Lägg till objekt manuellt",
+        text: "Alla parametrar för att lägga till objekt ska in här.",
+        button: "Avbryt"
+      })
+    }
+
+    function allRenting(){
+      var hides = document.getElementById('showAll');
+      hides.className += ' hidden';
+
+      var show = document.getElementById('allRents');
+      show.className = show.className.replace(" hidden", "");
+
+      toggleSelected();
+    }
+
+    function handleClick(whereTo) {
+      location.href = whereTo;
+    }
+
+    function oneRenting() {
+      var oneRents = document.getElementById('showAll');
+      oneRents.className = oneRents.className.replace(" hidden", "");
+
+      var hideRents = document.getElementById('allRents');
+      hideRents.className += " hidden";
+
+    }
+
+    function saveFoljesedel() {
+      $("#allFolje").click();
+      toggleSelected();
+    }
+
+    function toggleSelected() {
+      var butt1 = document.getElementById('oneFolje');
+      butt1.className = butt1.className.replace(" active", "");
+
+      var butt2 = document.getElementById('allFolje');
+      butt2.className += " active";
     }
   </script>
 </html>

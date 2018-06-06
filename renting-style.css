@@ -28,7 +28,7 @@ body {
 }
 
 .fa-question-circle, .fa-bars, .fa-home{
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 400;
   margin-right: 0.5em;
 }
@@ -43,6 +43,12 @@ button.fa-home {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.nothingCSS {
+  margin: 0px;
+  padding: 0px;
   width: 100%;
 }
 
@@ -67,8 +73,8 @@ button.fa-home {
 }
 
 .btn-primary.active {
-  background-color: #60879A;
-  border-color: #60879A;
+  background-color: #60879A !important;
+  border-color: #60879A !important;
 }
 
 .renting-slips {
@@ -77,39 +83,43 @@ button.fa-home {
   justify-content: left;
   width: 100%;
   flex-wrap: wrap;
+  margin-bottom: 6px;
 }
 .renting-label {
-  width: 25%;
+  width: 27%;
   margin-left: 3.7%;
   font-size: 2.5em;
   font-weight: lighter;
 }
+.dropdown {
+  width: 66%;
+}
 
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1em;
-  width: 67%;
+.dropdown-menu {
+  width: 100%;
+  font-size: 24px;
 }
 
 input {
   width: 100%;
-  padding: 0.01em 0.01em 0.01em 0.01em;
+  padding: 0.001em 0.001em 0.001em 0.001em;
   background-color: #ECEFF1;
-  font-size: 3em;
+  font-size: 2.5em;
   border-style: none;
   text-align: left;
   color: black;
   font-weight: lighter;
+  margin: 0px;
 }
 
 input::placeholder {
   font-weight: lighter;
   text-align: left;
-  color: black;
+  text-indent: 10px;
+  color: black !important;
   opacity: none;
 }
+
 
 input#date {
   font-weight: lighter;
@@ -202,6 +212,10 @@ textarea {
   color: white;
 }
 
+.swal-button, .swal-button--confirm {
+  background-color: #956F6F;
+}
+
 .save {
   width: 94%;
   padding: 1em 0em 1em 0em;
@@ -235,4 +249,88 @@ textarea {
 
 .navButton:hover {
   background-color: #546E7A;
+}
+
+.foljesedlar-choices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+#foljesedel-change {
+  background-color: #5196B8;
+  color: white;
+}
+
+#foljesedel-return {
+  background-color: #6F958A;
+  color: white;
+}
+
+
+
+.foljesedel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.foljesedlar-avdelning {
+  display: flex;
+  /*position: relative;*/ /* so content can center align */
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table-foljesedlar {
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.foljesedel-header {
+  font-size: 35px;
+  font-weight: lighter;
+  color: black;
+  width: 25%;
+  /*background-color:#6F8895;*/
+  margin-left: 35px;
+  /*text-indent: 10px;*/
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+/*
+.table-foljesedlar {
+  margin-left: 35px;
+}*/
+
+.foljesedel-info{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 93%;
+  background-color: #9FCBBF;
+  color: white;
+  text-indent: 10px;
+  padding: 3px;
+
+}
+
+.foljesedel-info-detaljer-odd {
+  width: 3%;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.foljesedel-info-detaljer {
+  width: 30%;
+  font-size: 30px;
+  text-align: center;
+  font-weight: lighter;
 }
