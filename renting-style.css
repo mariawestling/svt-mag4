@@ -28,7 +28,7 @@ body {
 }
 
 .fa-question-circle, .fa-bars, .fa-home{
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: 400;
   margin-right: 0.5em;
 }
@@ -73,8 +73,8 @@ button.fa-home {
 }
 
 .btn-primary.active {
-  background-color: #60879A;
-  border-color: #60879A;
+  background-color: #60879A !important;
+  border-color: #60879A !important;
 }
 
 .renting-slips {

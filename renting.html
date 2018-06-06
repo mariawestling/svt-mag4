@@ -149,6 +149,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Kategori</th>
                     <th scope="col">Prisgrupp</th>
+                    <th scope="col">Hyra</th>
                     <th scope="col">Bild</th>
                   </tr>
                 </thead>
@@ -157,12 +158,14 @@
                     <td>1</td>
                     <td>Soffor</td>
                     <td class="center">9</td>
+                    <td>200</td>
                     <td class="image"><i class="far fa-image"></i></td>
                   </tr>
                   <tr>
                     <td>2</td>
                     <td>Stolar</td>
                     <td class="center">5</td>
+                    <td>50</td>
                     <td class="image"><i class="far fa-image"></i></td>
                   </tr>
                 </tbody>
@@ -176,6 +179,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Kategori</th>
                   <th scope="col">Prisgrupp</th>
+                  <th scope="col">Hyra</th>
                   <th scope="col">Bild</th>
                 </tr>
               </thead>
@@ -184,6 +188,7 @@
                   <td>3</td>
                   <td>Mattor</td>
                   <td class="center">7</td>
+                  <td>100</td>
                   <td class="image"><i class="far fa-image"></i></td>
                 </tr>
               </tbody>
@@ -290,6 +295,8 @@
 
       var show = document.getElementById('allRents');
       show.className = show.className.replace(" hidden", "");
+
+      toggleSelected();
     }
 
     function handleClick(whereTo) {
@@ -307,7 +314,10 @@
 
     function saveFoljesedel() {
       $("#allFolje").click();
+      toggleSelected();
+    }
 
+    function toggleSelected() {
       var butt1 = document.getElementById('oneFolje');
       butt1.className = butt1.className.replace(" active", "");
 
