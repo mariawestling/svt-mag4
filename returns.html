@@ -1,56 +1,131 @@
 <!DOCTYPE>
 <html>
 <head>
+
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="returns-style.css">
   <title>Returns</title>
 </head>
 	<body>
 		<div class="row justify-content-md-center">
 			<div class="col-md-10">
-			<h1>Aktiva följesedlar</h1>
-			<div class="row">
-				<div class="input-group input-group-lg col-md-5 mb-3 mt-3">
-				  <input type="text" class="form-control" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-				  <div class="input-group-append">
-				    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+				<h1>Aktiva följesedlar</h1>
+				<div class="row">
+					<div class="input-group input-group-lg col-md-5 mb-3 mt-3">
+					  <input type="text" class="form-control" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+					  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+					  </div>
+					</div>
+				</div>
+
+				<div class="row header-wrapper">
+					<div class="col-md-4">Produktion</div>
+					<div class="col-md-4">Företag</div>
+					<div class="col-md-2">Antal objekt</div>
+					<div class="col-md-2">Datum</div>
+				</div>
+
+
+				<a data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+					<div class="row order-wrapper">
+						<div class="col-md-4">En Jättebra Film</br>1234</div>
+						<div class="col-md-4">Företag 1 AB</br>123456-7890</div>
+						<div class="col-md-2">16</div>
+						<div class="col-md-2">2018-05-30</div>
+					</div>
+				</a>
+
+				<div class="collapse" id="collapse1">
+				  <div class="details-wrapper">
+				  	<div class="row">
+					  	<div class="col-md-8">
+							<span>Kontaktperson</span></br>
+							Förnamn Efternamn
+						</div>
+						<div class="col-md-4">
+							<button class="retur-btn">RETUR</button>
+						</div>
+					</div>
+					<div class="row item-wrapper">
+						<div class="col-md-1">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-3">
+							Underkategori
+						</div>	
+						<div class="col-md-5">
+							Prisgrupp
+						</div>	
+						<div class="col-md-1">
+							<i class="far fa-check-circle status-icon"></i>
+						</div>					
+					</div>	
+
+					<div class="row item-wrapper">
+						<div class="col-md-1">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-3">
+							Underkategori
+						</div>	
+						<div class="col-md-5">
+							Prisgrupp
+						</div>	
+						<div class="col-md-1">
+							<i class="far fa-times-circle status-icon"></i>
+						</div>					
+					</div>																									
 				  </div>
 				</div>
-			</div>
-			<table class="table">
-			    <thead>
-			      <tr>
-			        <th>Produktion</th>
-			        <th>Företag</th>
-			        <th>Antal objekt</th>
-			        <th>Datum</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr>
-			        <td>En Jättebra Film</br>1234</td>
-			        <td>Företag 1 AB</br>123456-7890</td>
-			        <td>10</td>
-			        <td>2018-05-30</td>
-			      </tr>
-			      <tr>
-			        <td>Reklamfilm</br>2345</td>
-			        <td>Företag 2 AB</br>098765-4321</td>
-			        <td>37</td>
-			        <td>2018-05-04</td>
-			      </tr>
-			      <tr>
-			        <td>Ett Roligt Event</br>3456</td>
-			        <td>Företag 3 AB</br>135791-3579</td>			 
-			        <td>4</td>
-			        <td>2018-05-16</td>
-			      </tr>
-			    </tbody>
-			</table>
+
+
+				<a data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+					<div class="row order-wrapper">
+						<div class="col-md-4">Reklamfilm</br>2345</div>
+						<div class="col-md-4">Företag 2 AB</br>123456-7890</div>
+						<div class="col-md-2">4</div>
+						<div class="col-md-2">2018-05-30</div>
+					</div>
+				</a>
+
+				<div class="collapse" id="collapse2">
+				  <div class="">
+				    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+				  </div>
+				</div>
+
+
+				<a data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+					<div class="row order-wrapper">
+						<div class="col-md-4">Ett Jätteroligt Event</br>3456</div>
+						<div class="col-md-4">Företag 3 AB</br>123456-7890</div>
+						<div class="col-md-2">45</div>
+						<div class="col-md-2">2018-05-30</div>
+					</div>
+				</a>
+
+				<div class="collapse" id="collapse3">
+				  <div class="">
+				    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+				  </div>
+				</div>
+
+
 			</div>
 		</div>
 	</body>
