@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="renting-style.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+  <!-- Sweet Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <title>Renting</title>
 </head>
   <body>
@@ -56,8 +60,8 @@
       <div class="dropdown">
         <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
         <ul class="dropdown-menu">
-          <li onClick="companyChoice('Liselotte Andersson')">Liselotte Andersson</li>
-          <li onClick="companyChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
+          <li onClick="contactChoice('Liselotte Andersson')">Liselotte Andersson</li>
+          <li onClick="contactChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
         </ul>
       </div>
     </div>
@@ -106,7 +110,7 @@
     </div>
     <div class="items-options">
       <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
-      <button class="renting-butts manual">Lägg till Manuellt</button>
+      <button class="renting-butts manual" onClick="addManually()">Lägg till Manuellt</button>
     </div>
     <div class="items-options">
       <button class="renting-butts save">Spara</button>
@@ -136,6 +140,10 @@
     function contactChoice(contact) {
       var contButton = document.getElementById('contactButton');
       contButton.placeholder = contButton.placeholder.replace("Välj kontaktperson...", contact);
+    }
+
+    function addManually() {
+
     }
   </script>
 </html>
