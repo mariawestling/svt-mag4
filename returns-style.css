@@ -49,3 +49,14 @@ a:link {
 .fa-check-circle { 
   color: #6dce6a;
 }
+
+.check-btn {
+  width: 100%;
+  height: 80px;
+  border: none;
+  background-color: pink;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20pt;
+  margin-top: 20px;
+}
