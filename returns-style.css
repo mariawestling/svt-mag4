@@ -1,0 +1,20 @@
+.header-wrapper {
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.item-wrapper:hover {
+  background-color: pink;
+}
+
+.item-wrapper {
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a:link {
+  text-decoration: none;
+  color: #000;
+}
