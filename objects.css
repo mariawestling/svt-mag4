@@ -1,0 +1,148 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 8em;
+  margin-bottom: 2em;
+  color: #37474F;
+}
+
+.pageTitle {
+  width: 40%;
+  font-size: 4em;
+  letter-spacing: 1.5px;
+  text-align: left;
+}
+
+.header-icons{
+  width: 33%;
+  text-align: right;
+}
+
+.iconbuttons{
+  background: none;
+  border: none;
+}
+
+.fa-question-circle, .fa-bars, .fa-home{
+  font-size: 3em;
+  font-weight: 400;
+  margin-right: 0.5em;
+}
+
+button.fa-home {
+  width: 25%;
+  text-align: left;
+  margin-left: 0.1em
+}
+
+.objects-window {
+  padding: 5%;
+}
+
+.objects-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register-object {
+  width: 40%;
+  font-weight: lighter;
+  font-size: 30px;
+  background-color: #5196B8;
+  padding: 1%;
+  letter-spacing: 2px;
+}
+
+.register-object.active {
+  width: 40%;
+  font-weight: lighter;
+  font-size: 30px;
+  background-color: #6F8895 !important;
+}
+
+.input-group.input-group-lg.col-md-5.mb-3.mt-3 {
+  width: 35%;
+}
+
+.input-group-append {
+  display: flex;
+}
+
+.form-control, input::placeholder, input{
+  font-weight: lighter;
+  font-size: 30px;
+  padding: 4px;
+  align-items: center;
+}
+
+.objects-avdelning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  background-color: #9FCBBF;
+  color: white;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.objects-kostym, .objects-mobel, .objects-rekvisita {
+  width: 33.3%;
+  text-align: center;
+  padding: 4px;
+}
+
+.active {
+  background-color: #6F958A;
+  border-color: #6F958A;
+  margin: 0px;
+}
+
+.renting-slips {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.renting-label {
+  width: 27%;
+  margin-left: 3.7%;
+  font-size: 2.5em;
+  font-weight: lighter;
+}
+.dropdown {
+  width: 66%;
+}
+
+.dropdown-menu {
+  width: 100%;
+  font-size: 24px;
+}
+
+input {
+  width: 100%;
+  padding: 0.001em 0.001em 0.001em 0.001em;
+  background-color: #ECEFF1;
+  font-size: 2.5em;
+  border-style: none;
+  text-align: left;
+  color: black;
+  font-weight: lighter;
+  margin: 0px;
+}
+
+input::placeholder {
+  font-weight: lighter;
+  text-align: left;
+  text-indent: 10px;
+  color: black !important;
+  opacity: none;
+}
+
+.hidden {
+  display: none;
+}
