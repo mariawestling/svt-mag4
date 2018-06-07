@@ -43,6 +43,15 @@ function date() {
 }
 
 
+function saveReturn() {
+	
+}
+
+
+
+
+
+
 
 function showItems() {
       var x = document.getElementById('renting-items');
