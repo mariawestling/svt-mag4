@@ -33,39 +33,39 @@
         <button class="btn btn-primary active" id="oneFolje" onClick="oneRenting()">Ny följesedel</button>
         <button class="btn btn-primary" id="allFolje" onClick="allRenting()">Följesedlar</button>
     </div>
-    <div class="renting-slips">
-      <div class="renting-label">Företag</div>
-      <div class="dropdown">
-        <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj företag..."></input>
-        <ul class="dropdown-menu">
-          <li onClick="companyChoice('Anderssons Event')">Anderssons Event</li>
-          <li onClick="companyChoice('Gröna Lund Event')">Gröna Lund Event</li>
-          <li onClick="companyChoice('Sveriges Television')">Sveriges Television</li>
-        </ul>
+    <div class="nothingCSS" id="companyDetails">
+      <div class="renting-slips">
+        <div class="renting-label">Företag</div>
+        <div class="dropdown">
+          <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj företag..."></input>
+          <ul class="dropdown-menu">
+            <li onClick="companyChoice('Anderssons Event')">Anderssons Event</li>
+            <li onClick="companyChoice('Gröna Lund Event')">Gröna Lund Event</li>
+            <li onClick="companyChoice('Sveriges Television')">Sveriges Television</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="renting-slips">
-      <div class="renting-label">Produktion</div>
-      <div class="dropdown">
-        <input class="" style="margin: 0px;" id="productionButton" data-toggle="dropdown" placeholder="Välj produktion..."></input>
-        <ul class="dropdown-menu">
-          <li onClick="productionChoice('5492-49202')">5492-49202</li>
-          <li onClick="productionChoice('4720-38200')">4720-38200</li>
-          <li onClick="productionChoice('7392-39208')">7392-39208</li>
-        </ul>
+      <div class="renting-slips">
+        <div class="renting-label">Produktion</div>
+        <div class="dropdown">
+          <input class="" style="margin: 0px;" id="productionButton" data-toggle="dropdown" placeholder="Välj produktion..."></input>
+          <ul class="dropdown-menu">
+            <li onClick="productionChoice('5492-49202')">5492-49202</li>
+            <li onClick="productionChoice('4720-38200')">4720-38200</li>
+            <li onClick="productionChoice('7392-39208')">7392-39208</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="renting-slips">
-      <div class="renting-label">Kontaktperson</div>
-      <div class="dropdown">
-        <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
-        <ul class="dropdown-menu">
-          <li onClick="contactChoice('Liselotte Andersson')">Liselotte Andersson</li>
-          <li onClick="contactChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
-        </ul>
+      <div class="renting-slips">
+        <div class="renting-label">Kontaktperson</div>
+        <div class="dropdown">
+          <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
+          <ul class="dropdown-menu">
+            <li onClick="contactChoice('Liselotte Andersson')">Liselotte Andersson</li>
+            <li onClick="contactChoice('Jörgen Nilsson')">Jörgen Nilsson</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="nothingCSS" id="showAll">
       <div class="renting-slips">
         <div class="renting-label">Beräknad retur</div>
         <form action="">
@@ -73,6 +73,8 @@
           </input>
         </form>
       </div>
+    </div>
+    <div class="nothingCSS" id="showAll">
       <div id="renting-items" class="hidden">
         <table class="table">
           <thead class="thead-light">
@@ -118,10 +120,6 @@
       </div>
     </div>
     <div class="foljesedlar-info hidden" id="allRents">
-      <div class="foljesedlar-choices">
-        <button class="btn btn-primary" id="foljesedel-change">Ändra följesedel</button>
-        <button class="btn btn-primary" id="foljesedel-return">Registrera retur</button>
-      </div>
       <div class="foljesedlar-company">
         <div class="foljesedel">
           <div class="foljesedel-info">
@@ -295,6 +293,9 @@
 
       var show = document.getElementById('allRents');
       show.className = show.className.replace(" hidden", "");
+
+      var companyDets = document.getElementById('companyDetails');
+      companyDets.className += " hidden";
 
       toggleSelected();
     }
