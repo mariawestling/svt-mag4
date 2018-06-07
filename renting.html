@@ -25,7 +25,7 @@
         Uthyrning
       </div>
       <div class="header-icons">
-        <button class="far fa-question-circle iconbuttons"></button>
+        <button class="far fa-question-circle iconbuttons" onClick="instructionButton()"></button>
         <button class="fas fa-bars iconbuttons"></button>
       </div>
     </div>
@@ -323,6 +323,13 @@
 
       var butt2 = document.getElementById('allFolje');
       butt2.className += " active";
+    }
+
+    function instructionButton() {
+      swal({
+        title: "Instruktioner",
+        text: "Här är tanken att det ska finnas instruktioner att söka på gällande processen"
+      })
     }
   </script>
 </html>

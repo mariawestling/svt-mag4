@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <!-- Sweet Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <title>Kassa SVT Mag4</title>
 </head>
   <body>
@@ -15,7 +18,7 @@
         Startsida
       </div>
       <div class="header-icons">
-        <button class="far fa-question-circle iconbuttons"></button>
+        <button class="far fa-question-circle iconbuttons" onClick="instructionButton()"></button>
         <button class="fas fa-bars iconbuttons"></button>
       </div>
     </div>
@@ -29,6 +32,13 @@
   <script>
     function handleClick(whereTo) {
       location.href = whereTo;
+    }
+
+    function instructionButton() {
+      swal({
+        title: "Instruktioner",
+        text: "Här är tanken att det ska finnas instruktioner att söka på gällande processen"
+      })
     }
   </script>
 </html>
