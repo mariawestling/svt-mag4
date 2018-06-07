@@ -15,20 +15,36 @@
   <title>Return</title>
 </head>
   <body>
+
+  	<div class="header">
+	      <button class="fas fa-home iconbuttons" onClick="handleClick('index.html')"></button>
+	      <div class="pageTitle">
+	        Retur
+	      </div>
+	      <div class="header-icons">
+	        <button class="far fa-question-circle iconbuttons" onClick="instructionButton()"></button>
+	        <button class="fas fa-bars iconbuttons"></button>
+	      </div>
+	    </div>
+
     <div class="row justify-content-md-center">
 		<div class="col-md-10">
-			<h1>Retur av objekt</h1>
+
 			<div class="row order-wrapper">
 				<div class="col-md-4">En Jättebra Film</br>1234</div>
 				<div class="col-md-4">Företag 1 AB</br>123456-7890</div>
 				<div class="col-md-2">7</div>
 				<div class="col-md-2">2018-05-30</div>
 			</div>
-			<div class="row">
-				<span><b>Kontaktperson:</b></span>&emsp; Förnamn Efternamn &emsp;&emsp; 070-123 45 67 &emsp;&emsp; email@adress.se
+			<div class="row mb-3">
+			  	<div class="col-md-8">
+					<span><b>Kontaktperson:</b></span></br>
+					Förnamn Efternamn &emsp;&emsp; 070-123 45 67 &emsp;&emsp; email@adress.se
+				</div>
 			</div>
 
-					<div class="row item-wrapper">
+
+					<div class="row header-wrapper">
 						<div class="col-md-1">
 							ID
 						</div>
@@ -38,11 +54,32 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
+						<div class="col-md-2">
 							Prisgrupp
 						</div>	
 						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
+							Återlämnad
+						</div>					
+					</div>
+
+					<div class="row item-wrapper scan-item">
+						<div class="col-md-1">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-3">
+							Underkategori
+						</div>	
+						<div class="col-md-2">
+							Prisgrupp
+						</div>	
+						<div class="col-md-3 datum">
+							
+						</div>	
+						<div class="col-md-1">
+							<i class="far fa-circle status-icon"></i>
 						</div>					
 					</div>	
 
@@ -56,11 +93,14 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
+						<div class="col-md-2">
 							Prisgrupp
 						</div>	
+						<div class="col-md-3 datum">
+							
+						</div>							
 						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
+							<i class="far fa-circle status-icon"></i>
 						</div>					
 					</div>	
 
@@ -75,11 +115,14 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
+						<div class="col-md-2">
 							Prisgrupp
 						</div>	
+						<div class="col-md-3 datum">
+							
+						</div>							
 						<div class="col-md-1">
-							<i class="far fa-times-circle status-icon"></i>
+							<i class="far fa-circle status-icon"></i>
 						</div>					
 					</div>	
 
@@ -93,11 +136,14 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
+						<div class="col-md-2">
 							Prisgrupp
 						</div>	
+						<div class="col-md-3 datum">
+							
+						</div>	
 						<div class="col-md-1">
-							<i class="far fa-times-circle status-icon"></i>
+							<i class="far fa-circle status-icon"></i>
 						</div>					
 					</div>
 
@@ -111,9 +157,40 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
+						<div class="col-md-2">
 							Prisgrupp
 						</div>	
+						<div class="col-md-3 datum">
+							
+						</div>							
+						<div class="col-md-1">
+							<i class="far fa-circle status-icon"></i>
+						</div>					
+					</div>	
+
+
+					<div class="row item-wrapper">
+						<b>Återlämnat:</b>
+					</div>
+					
+
+
+					<div class="row item-wrapper">
+						<div class="col-md-1">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-3">
+							Underkategori
+						</div>	
+						<div class="col-md-2">
+							Prisgrupp
+						</div>	
+						<div class="col-md-3 datum">
+							2018-06-01
+						</div>							
 						<div class="col-md-1">
 							<i class="far fa-check-circle status-icon"></i>
 						</div>					
@@ -129,38 +206,28 @@
 						<div class="col-md-3">
 							Underkategori
 						</div>	
-						<div class="col-md-5">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-times-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper scan-item">
-						<div class="col-md-1">
-							ID
-						</div>
 						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-5">
 							Prisgrupp
 						</div>	
+						<div class="col-md-3 datum">
+							2018-06-01
+						</div>	
 						<div class="col-md-1">
-							<i class="far fa-times-circle status-icon"></i>
+							<i class="far fa-check-circle status-icon"></i>
 						</div>					
 					</div>		
 
 			<div class="row">
 				<div class="col-md-6">
-					<button onClick="scan()" class="check-btn">Starta scanning</button>
+					<button onClick="scan()" class="check-btn scan">Starta scanning</button>
 				</div>
 				<div class="col-md-6">
-					<button onClick="check()" class="check-btn">Bocka av manuellt</button>
+					<button onClick="check()" class="check-btn manuell">Bocka av manuellt</button>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-12">
+					<button onClick="saveReturn()" class="check-btn spara">Spara</button>
 				</div>
 			</div>						
 		</div>

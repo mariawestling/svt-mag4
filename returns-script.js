@@ -17,14 +17,29 @@ function scan() {
 
 function setDelay(div, t) {
   setTimeout(function(){
-    div.style.backgroundColor = "lightblue";
-    div.getElementsByTagName("i")[0].classList.remove('fa-times-circle');
+    div.style.backgroundColor = "#e7f9f7";
+    div.getElementsByTagName("i")[0].classList.remove('fa-circle');
     div.getElementsByTagName("i")[0].classList.add('fa-check-circle');
+    div.getElementsByClassName("datum")[0].innerHTML = date();
   }, t);
 }
 
-function check() {
-	
+function date() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd = '0'+dd
+	} 
+
+	if(mm<10) {
+	    mm = '0'+mm
+	} 
+
+	today = yyyy +'-' + mm + '-' + dd;
+	return today;
 }
 
 
@@ -79,11 +94,12 @@ function showItems() {
     }
 
     function oneRenting() {
-      var oneRents = document.getElementById('showAll');
-      oneRents.className = oneRents.className.replace(" hidden", "");
+    	location.href = 'renting.html';
+      // var oneRents = document.getElementById('showAll');
+      // oneRents.className = oneRents.className.replace(" hidden", "");
 
-      var hideRents = document.getElementById('allRents');
-      hideRents.className += " hidden";
+      // var hideRents = document.getElementById('allRents');
+      // hideRents.className += " hidden";
 
     }
 
