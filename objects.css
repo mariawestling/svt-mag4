@@ -50,7 +50,7 @@ button.fa-home {
   justify-content: space-between;
 }
 
-.register-object {
+.register-object, .all-objects {
   width: 40%;
   font-weight: lighter;
   font-size: 30px;
@@ -108,6 +108,11 @@ input.form-control {
   border-color: #6F958A;
   margin: 0px;
 }
+.nothingCSS {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
 
 .renting-slips {
   display: flex;
@@ -156,6 +161,32 @@ input::placeholder {
   display: none;
 }
 
+th {
+  letter-spacing: 1px;
+}
+
+.center {
+  text-indent: 2em;
+}
+
+.image {
+  text-indent: 0.3em;
+}
+
+.table {
+  font-weight: lighter;
+  width: 93%;
+  font-size: 2em;
+}
+
+.objects-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+
 .camera-choice {
   display: flex;
   flex-wrap: wrap;
@@ -165,7 +196,7 @@ input::placeholder {
   justify-content: center;
 }
 
-.btn-primary {
+.btn-primary.register-object {
   width: 51% !important;
   font-size: 30px !important;
   font-weight: lighter;
@@ -175,4 +206,12 @@ input::placeholder {
   letter-spacing: 2px;
   border-radius: 5px;
   margin-top: 10px !important;
+}
+
+.btn-primary.register-object {
+  width: 40%;
+}
+
+.btn-primary.all-objects {
+  width: 40%;
 }
