@@ -4,17 +4,23 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <!-- Bootstrap CSS-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="renting-style.css">
+  <link rel="stylesheet" href="returns-style.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 
   <!-- Sweet Alerts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Script -->  
+  <script src="returns-script.js"></script>
 
   <title>Renting</title>
 </head>
@@ -119,8 +125,8 @@
         <button class="renting-butts save" onClick="saveFoljesedel()">Spara</button>
       </div>
     </div>
-    <div class="foljesedlar-info hidden" id="allRents">
-      <div class="foljesedlar-company">
+    <div class="foljesedlar-info hidden row justify-content-md-center" id="allRents">
+      <!--<div class="foljesedlar-company">
         <div class="foljesedel">
           <div class="foljesedel-info">
             <div class="foljesedel-info-detaljer">
@@ -250,7 +256,210 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
+    <div class="col-md-11">
+        <div class="input-group input-group-lg col-md-5 mb-3 mt-3">
+              <input type="text" class="form-control" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+              </div>
+        </div>
+
+      <div class="row header-wrapper">
+          <div class="col-md-3">Produktion</div>
+          <div class="col-md-3">Företag</div>
+          <div class="col-md-2">Antal artiklar</div>
+          <div class="col-md-2">Hyrkostnad</div>
+          <div class="col-md-2">Datum</div>
+        </div>
+
+
+        <a data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+          <div class="row order-wrapper">
+            <div class="col-md-3">En Jättebra Film</br>1234</div>
+            <div class="col-md-3">Företag 1 AB</br>123456-7890</div>
+            <div class="col-md-2">7</div>
+            <div class="col-md-2">700 kr</div>
+            <div class="col-md-2">2018-05-30</div>
+          </div>
+        </a>
+
+        <div class="collapse" id="collapse1">
+          <div class="details-wrapper">
+            <div class="row">
+              <div class="col-md-8">
+              <span><b>Kontaktperson:</b></span></br>
+              Förnamn Efternamn &emsp;&emsp; 070-123 45 67 &emsp;&emsp; email@adress.se
+            </div>
+            <div class="col-md-2">
+              <button onClick="" class="retur-btn">ÄNDRA</button>
+            </div>
+            <div class="col-md-2">
+              <button onClick="handleReturn()" class="retur-btn">RETUR</button>
+            </div>
+          </div>
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-check-circle status-icon"></i>
+            </div>          
+          </div>  
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-check-circle status-icon"></i>
+            </div>          
+          </div>  
+
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-times-circle status-icon"></i>
+            </div>          
+          </div>  
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-times-circle status-icon"></i>
+            </div>          
+          </div>
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-check-circle status-icon"></i>
+            </div>          
+          </div>  
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-times-circle status-icon"></i>
+            </div>          
+          </div>  
+
+          <div class="row item-wrapper">
+            <div class="col-md-1">
+              ID
+            </div>
+            <div class="col-md-2">
+              Kategori
+            </div>  
+            <div class="col-md-3">
+              Underkategori
+            </div>  
+            <div class="col-md-5">
+              Prisgrupp
+            </div>  
+            <div class="col-md-1">
+              <i class="far fa-times-circle status-icon"></i>
+            </div>          
+          </div>                                                  
+          </div>
+        </div>
+
+
+        <a data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+          <div class="row order-wrapper">
+            <div class="col-md-3">Reklamfilm</br>2345</div>
+            <div class="col-md-3">Företag 2 AB</br>123456-7890</div>
+            <div class="col-md-2">15</div>
+            <div class="col-md-2">2000 kr</div>
+            <div class="col-md-2">2018-05-18</div>
+          </div>
+        </a>
+
+        <div class="collapse" id="collapse2">
+          <div class="">
+          </div>
+        </div>
+
+
+        <a data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+          <div class="row order-wrapper">
+            <div class="col-md-3">Ett Jätteroligt Event</br>3456</div>
+            <div class="col-md-3">Företag 3 AB</br>123456-7890</div>
+            <div class="col-md-2">45</div>
+            <div class="col-md-2">10 000 kr</div>
+            <div class="col-md-2">2018-05-02</div>
+          </div>
+        </a>
+
+        <div class="collapse" id="collapse3">
+          <div class="">
+          </div>
+        </div>
+    </div>
+
     </div>
 
   </body>

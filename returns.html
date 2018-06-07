@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="returns-style.css">
   <!-- Script -->  
@@ -17,9 +17,19 @@
   <title>Returns</title>
 </head>
 	<body>
+	    <div class="header">
+	      <button class="fas fa-home iconbuttons" onClick="handleClick('index.html')"></button>
+	      <div class="pageTitle">
+	        Uthyrning
+	      </div>
+	      <div class="header-icons">
+	        <button class="far fa-question-circle iconbuttons" onClick="instructionButton()"></button>
+	        <button class="fas fa-bars iconbuttons"></button>
+	      </div>
+	    </div>
+
 		<div class="row justify-content-md-center">
 			<div class="col-md-10">
-				<h1>Aktiva följesedlar</h1>
 				<div class="row">
 					<div class="input-group input-group-lg col-md-5 mb-3 mt-3">
 					  <input type="text" class="form-control" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -53,9 +63,29 @@
 							<span><b>Kontaktperson:</b></span></br>
 							Förnamn Efternamn &emsp;&emsp; 070-123 45 67 &emsp;&emsp; email@adress.se
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-2">
+		              		<button onClick="" class="retur-btn">ÄNDRA</button>
+		            	</div>
+						<div class="col-md-2">
 							<button onClick="handleReturn()" class="retur-btn">RETUR</button>
 						</div>
+					</div>
+					<div class="row header-wrapper">
+						<div class="col-md-1">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-3">
+							Underkategori
+						</div>	
+						<div class="col-md-5">
+							Prisgrupp
+						</div>	
+						<div class="col-md-1">
+							Återlämnad
+						</div>					
 					</div>
 					<div class="row item-wrapper">
 						<div class="col-md-1">

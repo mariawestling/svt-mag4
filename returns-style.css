@@ -1,7 +1,21 @@
+body {
+  background-color: #FAFAFA;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 8em;
+  margin-bottom: 2em;
+  color: #37474F;
+}
+
 .header-wrapper {
   border-bottom: 1px solid #ddd;
   font-weight: bold;
   padding-bottom: 10px;
+  font-size: 14pt;
 }
 
 .details-wrapper {
@@ -13,11 +27,15 @@
   border-top: 1px solid #ddd;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 16pt;
+  font-weight: 200;
 }
 
 .item-wrapper {
   border-top: 1px solid #f0f0f0; 
   padding: 5px 0;
+  font-size: 20pt;
+  font-weight: 200;
 }
 
 a:link {
@@ -27,7 +45,7 @@ a:link {
 
 .retur-btn {
   width: 100%;
-  height: 50px;
+  height: 60px;
   border-radius: 5px;
   border: none;
   background-color: #4468b0;
@@ -35,11 +53,11 @@ a:link {
   color: #fff;
   letter-spacing: 4px;
   font-weight: 500;
-  font-size: 18pt;
+  font-size: 16pt;
 }
 
 .status-icon {
-  font-size: 20pt;
+  font-size: 28pt;
 }
 
 .fa-times-circle {
@@ -59,4 +77,36 @@ a:link {
   color: #fff;
   font-size: 20pt;
   margin-top: 20px;
+}
+
+
+
+
+.pageTitle {
+  width: 33%;
+  font-size: 42pt;
+  letter-spacing: 1.5px;
+  text-align: left;
+}
+
+.header-icons{
+  width: 33%;
+  text-align: right;
+}
+
+.iconbuttons{
+  background: none;
+  border: none;
+}
+
+.fa-question-circle, .fa-bars, .fa-home{
+  font-size: 32pt;
+  margin-right: 0.5em;
+  color: #37474F;
+}
+
+button.fa-home {
+  width: 33%;
+  text-align: left;
+  margin-left: 0.1em
 }
