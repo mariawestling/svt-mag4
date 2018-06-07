@@ -165,13 +165,13 @@ input::placeholder {
   justify-content: center;
 }
 .choices {
-  width: 51%;
-  font-size: 30px;
+  width: 51% !important;
+  font-size: 30px !important;
   font-weight: lighter;
   background-color: #5196B8;
   padding: 8px;
   color: white;
   letter-spacing: 2px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 10px !important;
 }
