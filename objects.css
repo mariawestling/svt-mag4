@@ -19,6 +19,10 @@
   text-align: right;
 }
 
+.fa-question-circle {
+  width: 20%;
+}
+
 .iconbuttons{
   background: none;
   border: none;
@@ -66,6 +70,10 @@ button.fa-home {
   width: 35%;
 }
 
+input.form-control {
+  height: 100%;
+}
+
 .input-group-append {
   display: flex;
 }
@@ -86,6 +94,7 @@ button.fa-home {
   color: white;
   font-size: 30px;
   font-weight: lighter;
+  letter-spacing: 2px;
 }
 
 .objects-kostym, .objects-mobel, .objects-rekvisita {
@@ -107,15 +116,15 @@ button.fa-home {
   width: 100%;
   flex-wrap: wrap;
   margin-bottom: 6px;
+  margin-top: 15px;
 }
 .renting-label {
-  width: 27%;
-  margin-left: 3.7%;
+  width: 30%;
   font-size: 2.5em;
   font-weight: lighter;
 }
 .dropdown {
-  width: 66%;
+  width: 70%;
 }
 
 .dropdown-menu {
@@ -145,4 +154,24 @@ input::placeholder {
 
 .hidden {
   display: none;
+}
+
+.camera-choice {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.camera, .rfid {
+  width: 51%;
+  font-size: 30px;
+  font-weight: lighter;
+  background-color: #5196B8;
+  padding: 8px;
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
