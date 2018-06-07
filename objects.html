@@ -3,12 +3,107 @@
 <head>
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="objects.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+  <!-- Sweet Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <title>Objects</title>
 </head>
   <body>
-    Objects page
+    <div class="header">
+      <button class="fas fa-home iconbuttons" onClick="handleClick('index.html')"></button>
+      <div class="pageTitle">
+        Objektregistrering
+      </div>
+      <div class="header-icons">
+        <button class="far fa-question-circle iconbuttons" onClick="instructionButton()"></button>
+        <button class="fas fa-bars iconbuttons"></button>
+      </div>
+    </div>
+    <div class="objects-window">
+      <div class="objects-options">
+        <button class="btn btn-primary register-object active" id="register-button" onClick="toActive()">Registrera objekt</button>
+        <div class="input-group input-group-lg col-md-5 mb-3 mt-3">
+          <input type="text" class="form-control" onClick="fromActive()" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="objects-avdelning" id="objects-register-new">
+        <div class="objects-kostym active" id="kostym" onClick="toggleActive('kostym')">
+          KOSTYM
+        </div>
+        <div class="objects-mobel" id="mobel" onClick="toggleActive('mobel')">
+          MÖBEL
+        </div>
+        <div class="objects-rekvisita" id="rekvisita" onClick="toggleActive('rekvisita')">
+          REKVISITA
+        </div>
+      </div>
+      <div class="renting-slips">
+        <div class="renting-label">Kategori</div>
+        <div class="dropdown">
+          <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj kategori..."></input>
+          <ul class="dropdown-menu">
+            <li onClick="companyChoice('Anderssons Event')">A: antik</li>
+            <li onClick="companyChoice('Gröna Lund Event')">B: medeltid</li>
+            <li onClick="companyChoice('Sveriges Television')">C: 1500-1600</li>
+          </ul>
+        </div>
+      </div>
+      <div class="objects-all" id="objects-registered">
+
+      </div>
+    </div>
   </body>
+  <script>
+  function handleClick(whereTo) {
+    location.href = whereTo;
+  }
+
+  function instructionButton() {
+    swal({
+      title: "Instruktioner",
+      text: "Här är tanken att det ska finnas instruktioner att söka på gällande processen"
+    })
+  }
+
+  function toActive() {
+      var buttonActive = document.getElementById('register-button');
+      buttonActive.className += " active";
+  }
+
+  function fromActive() {
+    var deactivate = document.getElementById('register-button');
+    deactivate.className = deactivate.className.replace(" active", "");
+  }
+
+  var oldActiveID = "kostym";
+  function toggleActive(avdelning) {
+    console.log(oldActiveID);
+    var deact = document.getElementById(oldActiveID);
+    deact.className = deact.className.replace(" active", "");
+
+    var activate = document.getElementById(avdelning);
+    activate.className += " active";
+
+    oldActiveID = avdelning;
+  }
+
+  function companyChoice(company) {
+    var compButton = document.getElementById('companyButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj företag...", company);
+    console.log(compButton.placeholder);
+  }
+
+  </script>
 </html>
