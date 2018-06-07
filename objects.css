@@ -19,6 +19,10 @@
   text-align: right;
 }
 
+.fa-question-circle {
+  width: 20%;
+}
+
 .iconbuttons{
   background: none;
   border: none;
@@ -46,7 +50,7 @@ button.fa-home {
   justify-content: space-between;
 }
 
-.register-object {
+.register-object, .all-objects {
   width: 40%;
   font-weight: lighter;
   font-size: 30px;
@@ -66,13 +70,17 @@ button.fa-home {
   width: 35%;
 }
 
+input.form-control {
+  height: 100%;
+}
+
 .input-group-append {
   display: flex;
 }
 
 .form-control, input::placeholder, input{
   font-weight: lighter;
-  font-size: 30px;
+  font-size: 20px;
   padding: 4px;
   align-items: center;
 }
@@ -86,6 +94,7 @@ button.fa-home {
   color: white;
   font-size: 30px;
   font-weight: lighter;
+  letter-spacing: 2px;
 }
 
 .objects-kostym, .objects-mobel, .objects-rekvisita {
@@ -99,6 +108,11 @@ button.fa-home {
   border-color: #6F958A;
   margin: 0px;
 }
+.nothingCSS {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
 
 .renting-slips {
   display: flex;
@@ -107,15 +121,15 @@ button.fa-home {
   width: 100%;
   flex-wrap: wrap;
   margin-bottom: 6px;
+  margin-top: 15px;
 }
 .renting-label {
-  width: 27%;
-  margin-left: 3.7%;
+  width: 30%;
   font-size: 2.5em;
   font-weight: lighter;
 }
 .dropdown {
-  width: 66%;
+  width: 70%;
 }
 
 .dropdown-menu {
@@ -145,4 +159,59 @@ input::placeholder {
 
 .hidden {
   display: none;
+}
+
+th {
+  letter-spacing: 1px;
+}
+
+.center {
+  text-indent: 2em;
+}
+
+.image {
+  text-indent: 0.3em;
+}
+
+.table {
+  font-weight: lighter;
+  width: 93%;
+  font-size: 2em;
+}
+
+.objects-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+
+.camera-choice {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary.register-object {
+  width: 51% !important;
+  font-size: 30px !important;
+  font-weight: lighter;
+  background-color: #5196B8;
+  padding: 8px;
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  margin-top: 10px !important;
+}
+
+.btn-primary.register-object {
+  width: 40%;
+}
+
+.btn-primary.all-objects {
+  width: 40%;
 }

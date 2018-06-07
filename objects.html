@@ -30,13 +30,13 @@
     </div>
     <div class="objects-window">
       <div class="objects-options">
-        <button class="btn btn-primary register-object active" id="register-button" onClick="toActive()">Registrera objekt</button>
+        <button class="btn btn-primary register-object" id="register-button" onClick="hideAll()">Registrera objekt</button>
+        <button class="btn btn-primary all-objects" onClick="hideNew()">Alla objekt</button>
+<!--
         <div class="input-group input-group-lg col-md-5 mb-3 mt-3">
           <input type="text" class="form-control" onClick="fromActive()" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
-          </div>
         </div>
+-->
       </div>
       <div class="objects-avdelning" id="objects-register-new">
         <div class="objects-kostym active" id="kostym" onClick="toggleActive('kostym')">
@@ -49,19 +49,129 @@
           REKVISITA
         </div>
       </div>
-      <div class="renting-slips">
-        <div class="renting-label">Kategori</div>
-        <div class="dropdown">
-          <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj kategori..."></input>
-          <ul class="dropdown-menu">
-            <li onClick="companyChoice('Anderssons Event')">A: antik</li>
-            <li onClick="companyChoice('Gröna Lund Event')">B: medeltid</li>
-            <li onClick="companyChoice('Sveriges Television')">C: 1500-1600</li>
-          </ul>
+      <div class="nothingCSS" id="register-new">
+
+        <div class="renting-slips">
+          <div class="renting-label">Kategori</div>
+          <div class="dropdown">
+            <input class="" style="margin: 0px;" id="categoryButton" data-toggle="dropdown" placeholder="Välj kategori..."></input>
+            <ul class="dropdown-menu">
+              <li onClick="categoryChoice('A: antik')">A: antik</li>
+              <li onClick="categoryChoice('B: medeltid')">B: medeltid</li>
+              <li onClick="categoryChoice('C: 1500-1600)">C: 1500-1600</li>
+            </ul>
+          </div>
+        </div>
+        <div class="renting-slips">
+          <div class="renting-label">Kön</div>
+          <div class="dropdown">
+            <input class="" style="margin: 0px;" id="genderButton" data-toggle="dropdown" placeholder="Välj kön..."></input>
+            <ul class="dropdown-menu">
+              <li onClick="genderChoice('Kvinna')">Kvinna</li>
+              <li onClick="genderChoice('Man')">Man</li>
+              <li onClick="genderChoice('Kille')">Kille</li>
+              <li onClick="genderChoice('Tjej')">Tjej</li>
+            </ul>
+          </div>
+        </div>
+        <div class="renting-slips">
+          <div class="renting-label">Plagg</div>
+          <div class="dropdown">
+            <input class="" style="margin: 0px;" id="clothingButton" data-toggle="dropdown" placeholder="Välj plagg..."></input>
+            <ul class="dropdown-menu">
+              <li onClick="clothingChoice('Byxor')">Byxor</li>
+              <li onClick="clothingChoice('Tröjor')">Tröjor</li>
+              <li onClick="clothingChoice('Klänningar')">Klänningar</li>
+            </ul>
+          </div>
+        </div>
+        <div class="renting-slips">
+          <div class="renting-label">Storlek</div>
+          <div class="dropdown">
+            <input class="" style="margin: 0px;" id="sizeButton" data-toggle="dropdown" placeholder="Välj storlek..."></input>
+            <ul class="dropdown-menu">
+              <li onClick="sizeChoice('34')">34</li>
+              <li onClick="sizeChoice('36')">36</li>
+              <li onClick="sizeChoice('38')">38</li>
+            </ul>
+          </div>
+        </div>
+        <div class="renting-slips">
+          <div class="renting-label">Prisgrupp</div>
+          <div class="dropdown">
+            <input class="" style="margin: 0px;" id="priceButton" data-toggle="dropdown" placeholder="Välj prisgrupp..."></input>
+            <ul class="dropdown-menu">
+              <li onClick="priceChoice('1: 0-50')">1: 0-50</li>
+              <li onClick="priceChoice('2: 100-300')">2: 50-100</li>
+              <li onClick="priceChoice('3: 100-300')">3: 100-300</li>
+              <li onClick="priceChoice('4: 300-500')">4: 300-500</li>
+              <li onClick="priceChoice('5: 500-600')">5: 500-600</li>
+              <li onClick="priceChoice('6: 600-700')">6: 600-700</li>
+            </ul>
+          </div>
+        </div>
+        <div class="camera-choice">
+          <button class="btn btn-primary register-object">Ta bild</button>
+          <button class="btn btn-primary register-object">Scanna RFID-tagg</button>
         </div>
       </div>
-      <div class="objects-all" id="objects-registered">
-
+      </div>
+      <div class="objects-all hidden" id="objects-registered">
+        <table class="table table-foljesedlar">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Prisgrupp</th>
+                <th scope="col">Storlek</th>
+                <th scope="col">Bild</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>A: antik</td>
+                <td class="center">9</td>
+                <td>40</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A: antik</td>
+                <td class="center">5</td>
+                <td>42</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A: antik</td>
+                <td class="center">5</td>
+                <td>34</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A: antik</td>
+                <td class="center">5</td>
+                <td>50</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A: antik</td>
+                <td class="center">5</td>
+                <td>44</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A: antik</td>
+                <td class="center">5</td>
+                <td>38</td>
+                <td class="image"><i class="far fa-image"></i></td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
   </body>
@@ -99,10 +209,50 @@
     oldActiveID = avdelning;
   }
 
-  function companyChoice(company) {
-    var compButton = document.getElementById('companyButton');
-    compButton.placeholder = compButton.placeholder.replace("Välj företag...", company);
+  function categoryChoice(category) {
+    var compButton = document.getElementById('categoryButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj kategori...", category);
     console.log(compButton.placeholder);
+  }
+
+  function genderChoice(category) {
+    var compButton = document.getElementById('genderButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj kön...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function clothingChoice(category) {
+    var compButton = document.getElementById('clothingButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj plagg...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function sizeChoice(category) {
+    var compButton = document.getElementById('sizeButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj storlek...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function priceChoice(category) {
+    var compButton = document.getElementById('priceButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj prisgrupp...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function hideAll() {
+    var allObjects = document.getElementById('objects-registered');
+    allObjects.className += " hidden";
+
+    var newObj = document.getElementById('register-new');
+    newObj.className = newObj.className.replace(" hidden", "");
+  }
+
+  function hideNew() {
+    var newObj = document.getElementById('register-new');
+    newObj.className += " hidden"
+
+    var allObjects = document.getElementById('objects-registered');
+    allObjects.className = allObjects.className.replace(" hidden", "");
   }
 
   </script>
