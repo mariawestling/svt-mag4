@@ -164,7 +164,7 @@ input::placeholder {
   align-items: center;
   justify-content: center;
 }
-.camera, .rfid {
+.choices {
   width: 51%;
   font-size: 30px;
   font-weight: lighter;
