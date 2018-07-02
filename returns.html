@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="returns-style.css">
   <!-- Script -->  
   <script src="returns-script.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
   <title>Returns</title>
 </head>
@@ -51,6 +53,9 @@
 					<div class="col-md-2">Datum</div>
 				</div>
 
+			<div id="list">
+			  <!--Generated list items will go here-->
+			</div>
 
 				<a data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
 					<div class="row order-wrapper">
@@ -259,7 +264,64 @@
 				</div>
 
 
+
+			<script id="template-list-item" type="text/template">
+				<a data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+					<div class="row order-wrapper">
+						<div class="col-md-4">{{name}}</br>{{production}}</div>
+						<div class="col-md-4">{{company}}</br>{{orgNr}}</div>
+						<div class="col-md-2">{{amount}}</div>
+						<div class="col-md-2 utdatum">{{date}}</div>
+					</div>
+				</a>
+			</script>
+
+
 			</div>
 		</div>
+
+
+
+
 	</body>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDoWMxKEeSbiVMr-5e45l_vEr7DZ2wuq6o",
+    authDomain: "svt-mag4.firebaseapp.com",
+    databaseURL: "https://svt-mag4.firebaseio.com",
+    projectId: "svt-mag4",
+    storageBucket: "svt-mag4.appspot.com",
+    messagingSenderId: "591272820135"
+  };
+  firebase.initializeApp(config);
+
+
+	firebase.database().ref('orders/').once('value').then(function(snapshot) {
+	    // Object we’re working with
+		var dataObject = snapshot.val();
+
+		// Cache of the template
+		var template = document.getElementById("template-list-item");
+		// Get the contents of the template
+		var templateHtml = template.innerHTML;
+		// Final HTML variable as empty string
+		var listHtml = "";
+
+		// Loop through dataObject, replace placeholder tags
+		// with actual data, and generate final HTML
+		for (var key in dataObject) {
+		  listHtml += templateHtml.replace(/{{company}}/g, dataObject[key].company)
+		                          .replace(/{{production}}/g, dataObject[key].production)
+		                          .replace(/{{contact}}/g, dataObject[key].contact)
+		                          .replace(/{{date}}/g, dataObject[key].returnDate);
+		}
+
+		// Replace the HTML of #list with final HTML
+		document.getElementById("list").innerHTML = listHtml;
+
+	});	
+
+</script>
+
 </html>

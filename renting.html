@@ -18,6 +18,8 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Script -->  
   <script src="returns-script.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
   <title>Renting</title>
 </head>
@@ -88,25 +90,36 @@
               <th scope="col">Bild</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
+          <tbody id=list>
+		
+			<script id="template-list-item" type="text/template">
+	            <tr>
+	              <td class="objectID">{{id}}</td>
+	              <td>{{category}}</td>
+	              <td class="center">{{price}}</td>
+	              <td class="image"><i class="far fa-image"></i></td>
+	            </tr>
+			</script>
+
+
+<!--             <tr>
+              <td class="objectID">6782</td>
               <td>Soffor</td>
               <td class="center">9</td>
               <td class="image"><i class="far fa-image"></i></td>
             </tr>
             <tr>
-              <td>2</td>
+              <td class="objectID">9821</td>
               <td>Stolar</td>
-              <td class="center">5</td>
-              <td class="image"><i class="far fa-image"></i></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Mattor</td>
               <td class="center">7</td>
               <td class="image"><i class="far fa-image"></i></td>
             </tr>
+            <tr>
+              <td class="objectID">6124</td>
+              <td>Mattor</td>
+              <td class="center">7</td>
+              <td class="image"><i class="far fa-image"></i></td>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -460,6 +473,21 @@
     </div>
 
   </body>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDoWMxKEeSbiVMr-5e45l_vEr7DZ2wuq6o",
+    authDomain: "svt-mag4.firebaseapp.com",
+    databaseURL: "https://svt-mag4.firebaseio.com",
+    projectId: "svt-mag4",
+    storageBucket: "svt-mag4.appspot.com",
+    messagingSenderId: "591272820135"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
   <script>
     function showItems() {
       var x = document.getElementById('renting-items');
@@ -467,7 +495,44 @@
 
       var y = document.getElementById('other-damages');
       y.className = x.className.replace("hidden", "");
+
+
+		var dataObject = {
+  			0: {"id":67,"category":"Soffa","price":9},
+  			1: {"id":52,"category":"Stol","price":4},
+  			2: {"id":17,"category":"Lampa","price":5},
+  			3: {"id":84,"category":"Glas","price":2},
+  			4: {"id":30,"category":"Telefon","price":6},
+  			5: {"id":81,"category":"Matta","price":7},
+  			6: {"id":83,"category":"Matta","price":5}
+		};
+
+		// Cache of the template
+		var template = document.getElementById("template-list-item");
+		// Get the contents of the template
+		var templateHtml = template.innerHTML;
+		// Final HTML variable as empty string
+		var listHtml = "";
+
+		// Loop through dataObject, replace placeholder tags
+		// with actual data, and generate final HTML
+		var time = 500;
+		for (var key in dataObject) {
+		  	listHtml += templateHtml.replace(/{{id}}/g, dataObject[key].id)
+		                          .replace(/{{category}}/g, dataObject[key].category)
+		                          .replace(/{{price}}/g, dataObject[key].price);
+		
+		    setDelay(listHtml, time);
+			time += 500;
+		}
     }
+
+	function setDelay(listHtml, t) {
+	  setTimeout(function(){
+	  	document.getElementById("list").innerHTML = listHtml;
+	  }, t);
+	}
+
 
     function companyChoice(company) {
       var compButton = document.getElementById('companyButton');
@@ -522,6 +587,22 @@
     }
 
     function saveFoljesedel() {
+		var company = document.getElementById('companyButton').placeholder;
+		var production = document.getElementById('productionButton').placeholder;
+		var contact = document.getElementById('contactButton').placeholder;
+		var returnDate = document.getElementById('date').value;
+
+		firebase.database().ref('orders/').push({
+		    company: company,
+		    production: production,
+		    contact: contact,
+		    returnDate: returnDate
+		});
+
+    	var list = $(".objectID");
+    	for (var i = 0; i < list.length; i++) {
+    		console.log(list[i].innerHTML);
+    	}
       $("#allFolje").click();
       toggleSelected();
     }
