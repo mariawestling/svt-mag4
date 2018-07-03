@@ -113,169 +113,86 @@
 						<div class="col-md-1">
 							<i class="far fa-circle status-icon"></i>
 						</div>					
-					</div>	
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-5">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-5">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-5">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
 					</div>
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-5">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							2018-06-01
-						</div>							
-						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							2018-06-01
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
-						</div>					
-					</div>																									
-				  </div>
-				</div>
-
-
-				<a data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
-					<div class="row order-wrapper">
-						<div class="col-md-4">Reklamfilm</br>2345</div>
-						<div class="col-md-4">Företag 2 AB</br>123456-7890</div>
-						<div class="col-md-2">15</div>
-						<div class="col-md-2 utdatum">2018-05-18</div>
-					</div>
-				</a>
-
-				<div class="collapse" id="collapse2">
-				  <div class="">
-				  </div>
-				</div>
-
-
-				<a data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
-					<div class="row order-wrapper">
-						<div class="col-md-4">Ett Jätteroligt Event</br>3456</div>
-						<div class="col-md-4">Företag 3 AB</br>123456-7890</div>
-						<div class="col-md-2">45</div>
-						<div class="col-md-2 utdatum">2018-05-02</div>
-					</div>
-				</a>
-
-				<div class="collapse" id="collapse3">
-				  <div class="">
+																								
 				  </div>
 				</div>
 
 
 
 			<script id="template-list-item" type="text/template">
-				<a data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+				<a data-toggle="collapse" href="#collapse{{num}}" role="button" aria-expanded="false" aria-controls="collapse{{num}}">
 					<div class="row order-wrapper">
 						<div class="col-md-4">{{name}}</br>{{production}}</div>
 						<div class="col-md-4">{{company}}</br>{{orgNr}}</div>
-						<div class="col-md-2">{{amount}}</div>
+						<div class="col-md-2">7</div>
 						<div class="col-md-2 utdatum">{{date}}</div>
 					</div>
 				</a>
+
+				<div class="collapse" id="collapse{{num}}">
+				  <div class="details-wrapper">
+				  	<div class="row">
+					  	<div class="col-md-8">
+							<span><b>Kontaktperson:</b></span></br>
+							{{contact}} &emsp;&emsp; 070-123 45 67 &emsp;&emsp; email@adress.se
+						</div>
+						<div class="col-md-2">
+		              		<button onClick="" class="retur-btn">ÄNDRA</button>
+		            	</div>
+						<div class="col-md-2">
+							<button onClick="handleReturn()" class="retur-btn">RETUR</button>
+						</div>
+					</div>
+					<div class="row header-wrapper mt-3">
+						<div class="col-md-2">
+							ID
+						</div>
+						<div class="col-md-2">
+							Kategori
+						</div>	
+						<div class="col-md-2">
+							Prisgrupp
+						</div>	
+						<div class="col-md-2">
+							Bild
+						</div>
+						<div class="col-md-3">
+							Återlämnad
+						</div>						
+					</div>
+
+					<div id="genObjects{{num}}">
+					  {{content}}
+					</div>
+																								
+				  </div>
+				</div>
+
 			</script>
 
+
+			<script id="template-objects" type="text/template">
+					<div class="row item-wrapper">
+						<div class="col-md-2">
+							{{id}}
+						</div>
+						<div class="col-md-2">
+							{{category}}
+						</div>		
+						<div class="col-md-2">
+							{{price}}
+						</div>	
+						<div class="col-md-2 image"><i class="far fa-image"></i>
+						</div>
+						<div class="col-md-3">
+							{{returnDate}}
+						</div>	
+						<div class="col-md-1">
+							<i class="far fa-circle status-icon"></i>
+						</div>					
+					</div>
+			</script>
 
 			</div>
 		</div>
@@ -310,17 +227,46 @@
 
 		// Loop through dataObject, replace placeholder tags
 		// with actual data, and generate final HTML
+
+		var objects = {
+	  			0: {"id":67,"category":"Soffa","price":9,"returnDate": "2018-06-20"},
+	  			1: {"id":52,"category":"Stol","price":4,"returnDate": "2018-06-20"},
+	  			2: {"id":17,"category":"Lampa","price":5,"returnDate": "2018-06-20"},
+	  			3: {"id":84,"category":"Glas","price":2,"returnDate": "2018-06-20"},
+	  			4: {"id":30,"category":"Telefon","price":6,"returnDate": "2018-06-20"},
+	  			5: {"id":81,"category":"Matta","price":7,"returnDate": "2018-06-20"},
+	  			6: {"id":83,"category":"Matta","price":5,"returnDate": "2018-06-20"}
+			};
+
+		var template2 = document.getElementById("template-objects");
+		var templateHtml2 = template2.innerHTML;
+		var listHtml2 = "";
+
+		for (var key in objects) {
+		  listHtml2 += templateHtml2.replace(/{{id}}/g, objects[key].id)
+		                          .replace(/{{category}}/g, objects[key].category)
+		                          .replace(/{{price}}/g, objects[key].price)
+		                          .replace(/{{returnDate}}/g, objects[key].returnDate);
+		}		
+
+
+		var num = 0;
 		for (var key in dataObject) {
 		  listHtml += templateHtml.replace(/{{company}}/g, dataObject[key].company)
 		                          .replace(/{{production}}/g, dataObject[key].production)
 		                          .replace(/{{contact}}/g, dataObject[key].contact)
-		                          .replace(/{{date}}/g, dataObject[key].returnDate);
+		                          .replace(/{{date}}/g, dataObject[key].returnDate)
+		                          .replace(/{{num}}/g, num)
+		                          .replace(/{{content}}/g, listHtml2);
+			num++;
 		}
 
 		// Replace the HTML of #list with final HTML
 		document.getElementById("list").innerHTML = listHtml;
 
+
 	});	
+
 
 </script>
 
