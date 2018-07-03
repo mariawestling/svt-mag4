@@ -44,13 +44,23 @@
 					    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
 					  </div>
 					</div>
+					<div class="offset-md-2 col-md-2 mb-3 mt-4" style="text-align: right; font-size: 14pt;">
+						<span>Sortera efter:</span>
+					</div>
+					<div class="col-md-3 mb-3 mt-3">
+						<select>
+						  <option value="volvo">Senast tillagd</option>
+						  <option value="saab">Returdatum</option>
+						  <option value="mercedes">Företag</option>
+						</select>
+					</div>
 				</div>
 
 				<div class="row header-wrapper">
 					<div class="col-md-4">Produktion</div>
 					<div class="col-md-4">Företag</div>
 					<div class="col-md-2">Antal objekt</div>
-					<div class="col-md-2">Datum</div>
+					<div class="col-md-2">Åter</div>
 				</div>
 
 			<div id="list">
@@ -90,7 +100,7 @@
 							Kategori
 						</div>	
 						<div class="col-md-2">
-							Prisgrupp
+							Pris
 						</div>	
 						<div class="col-md-2">
 							Bild
@@ -118,8 +128,11 @@
 						<div class="col-md-2">
 							{{category}}
 						</div>		
-						<div class="col-md-2">
+						<div class="col-md-1">
 							{{price}}
+						</div>	
+						<div class="col-md-1">
+							{{rent}}
 						</div>	
 						<div class="col-md-2 image"><i class="far fa-image"></i>
 						</div>
@@ -127,7 +140,7 @@
 							{{returnDate}}
 						</div>	
 						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
+							<i class="far fa-{{icon}} status-icon"></i>
 						</div>					
 					</div>
 			</script>
@@ -167,13 +180,13 @@
 		// with actual data, and generate final HTML
 
 		var objects = {
-	  			0: {"id":67,"category":"Soffa","price":9,"returnDate": "2018-06-20"},
-	  			1: {"id":52,"category":"Stol","price":4,"returnDate": "2018-06-20"},
-	  			2: {"id":17,"category":"Lampa","price":5,"returnDate": "2018-06-20"},
-	  			3: {"id":84,"category":"Glas","price":2,"returnDate": "2018-06-20"},
-	  			4: {"id":30,"category":"Telefon","price":6,"returnDate": "2018-06-20"},
-	  			5: {"id":81,"category":"Matta","price":7,"returnDate": "2018-06-20"},
-	  			6: {"id":83,"category":"Matta","price":5,"returnDate": "2018-06-20"}
+	  			0: {"id":67,"category":"Soffa","price":9,"rent":"20%", "returnDate": "","icon":"circle"},
+	  			1: {"id":52,"category":"Stol","price":4,"returnDate": "","icon":"circle"},
+	  			2: {"id":17,"category":"Lampa","price":5,"returnDate": "","icon":"circle"},
+	  			3: {"id":84,"category":"Glas","price":2,"returnDate": "","icon":"circle"},
+	  			4: {"id":30,"category":"Telefon","price":6,"returnDate": "","icon":"circle"},
+	  			5: {"id":81,"category":"Matta","price":7,"rent":"10%","returnDate": "2018-06-20","icon":"check-circle"},
+	  			6: {"id":83,"category":"Matta","price":5,"rent":"10%","returnDate": "2018-06-20","icon":"check-circle"}
 			};
 
 		var template2 = document.getElementById("template-objects");
@@ -184,7 +197,9 @@
 		  listHtml2 += templateHtml2.replace(/{{id}}/g, objects[key].id)
 		                          .replace(/{{category}}/g, objects[key].category)
 		                          .replace(/{{price}}/g, objects[key].price)
-		                          .replace(/{{returnDate}}/g, objects[key].returnDate);
+		                          .replace(/{{rent}}/g, objects[key].rent)
+		                          .replace(/{{returnDate}}/g, objects[key].returnDate)
+		                          .replace(/{{icon}}/g, objects[key].icon);
 		}		
 
 
