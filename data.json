@@ -1,0 +1,21 @@
+{
+"orders" : 
+	{"1":
+		{
+			"company":"SVT",
+			"production": 2222,
+			"contact": "Simone",
+			"returnDate": "2018-07-15"
+		}
+	},
+"customers" : 
+	{"1":
+		{
+			"name":"Simone",
+			"phone": 2222222,
+			"email": "simone@simone.se",
+			"company": "SVT",
+			"production": 2222
+		}
+	}
+}
