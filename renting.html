@@ -587,24 +587,21 @@
     }
 
     function saveFoljesedel() {
-		var company = document.getElementById('companyButton').placeholder;
-		var production = document.getElementById('productionButton').placeholder;
-		var contact = document.getElementById('contactButton').placeholder;
-		var returnDate = document.getElementById('date').value;
+  		var company = document.getElementById('companyButton').placeholder;
+  		var production = document.getElementById('productionButton').placeholder;
+  		var contact = document.getElementById('contactButton').placeholder;
+  		var returnDate = document.getElementById('date').value;
 
-		firebase.database().ref('orders/').push({
-		    company: company,
-		    production: production,
-		    contact: contact,
-		    returnDate: returnDate
-		});
+  		firebase.database().ref('orders/').push({
+  		    company: company,
+  		    production: production,
+  		    contact: contact,
+  		    returnDate: returnDate
+  		}).then(function(){
+          $("#allFolje").click();
+          toggleSelected();
 
-    	var list = $(".objectID");
-    	for (var i = 0; i < list.length; i++) {
-    		console.log(list[i].innerHTML);
-    	}
-      $("#allFolje").click();
-      toggleSelected();
+      });
     }
 
     function toggleSelected() {
