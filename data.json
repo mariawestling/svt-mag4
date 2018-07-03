@@ -1,13 +1,28 @@
 {
 "orders" : 
-	{"1":
+	[
+		{
+			"company":"SVT",
+			"production": 1111,
+			"contact": "Simone",
+			"returnDate": "2018-07-15",
+			"rentDate": "2018-06-15"
+		},
+		{
+			"company":"SVT",
+			"production": 3333,
+			"contact": "Simone",
+			"returnDate": "2018-07-15",
+			"rentDate": "2018-06-19"
+		},
 		{
 			"company":"SVT",
 			"production": 2222,
 			"contact": "Simone",
-			"returnDate": "2018-07-15"
+			"returnDate": "2018-07-15",
+			"rentDate": "2018-06-16"
 		}
-	},
+	],
 "customers" : 
 	{"1":
 		{
