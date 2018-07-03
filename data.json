@@ -24,13 +24,43 @@
 		}
 	],
 "customers" : 
-	{"1":
-		{
-			"name":"Simone",
-			"phone": 2222222,
-			"email": "simone@simone.se",
-			"company": "SVT",
-			"production": 2222
-		}
+	{
+    "-LGWn4bdHjDVPpdJabzM" : {
+      "company" : "Event AB",
+      "email" : "adam@andersson.com",
+      "name" : "Adam Andersson",
+      "orgNr" : "5830-348302",
+      "phone" : "072-458 39 54",
+      "production" : "Game Night"
+    },
+    "-LGWopR70GeL93bRLCC8" : {
+      "company" : "Kina Event AB",
+      "email" : "jan@jansson.com",
+      "name" : "Jan Jansson",
+      "orgNr" : "560348-3847",
+      "phone" : "072-574 94 04",
+      "production" : "Midnatt"
+    },
+    "-LGWplrpdx5hs-sYHHIC" : {
+      "company" : "Gröna Lund",
+      "email" : "jimmy@gustavsson.com",
+      "name" : "Jimmy Gustavsson",
+      "orgNr" : "569302-3793",
+      "phone" : "072-043 83 94",
+      "production" : "Spökhuset"
+    },
+    "-LGWvXb1H1Eu6f-j5hQ0" : {
+      "company" : "TV4",
+      "email" : "greta@arildsson.com",
+      "name" : "Greta Arildsson",
+      "orgNr" : "593028-8394",
+      "phone" : "073-847 49 84",
+      "production" : "Nyhetsmorgon"
+    }},
+"objects" : 
+	{
+			"department":"rekvisita",
+			"category": "soffa",
+			"price": "500"
 	}
 }

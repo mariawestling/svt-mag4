@@ -7,24 +7,31 @@ function handleReturn() {
 }
 
 function scan() {
-	var x = document.querySelectorAll(".scan-item");
+  document.getElementsByClassName("scan")[0].innerHTML = "Scannar...";
+  document.getElementsByClassName("scan")[0].setAttribute("style", "background-color: red;");
+
+	var x = document.querySelectorAll(".item-wrapper");
 	var time = 1000;
-	for (var i = 0; i < x.length; i++) {
+	for (var i = 0; i < x.length-4; i++) {
 		setDelay(x[i],time);
 		time+= 1000;
 	}
+  setTimeout(function(){
+    document.getElementsByClassName("scan")[0].setAttribute("style", "");
+    document.getElementsByClassName("scan")[0].innerHTML = "Starta scanning";
+  }, 5000);
 }
 
 function setDelay(div, t) {
   setTimeout(function(){
     div.style.backgroundColor = "#e7f9f7";
-    div.getElementsByTagName("i")[0].classList.remove('fa-circle');
-    div.getElementsByTagName("i")[0].classList.add('fa-check-circle');
-    div.getElementsByClassName("datum")[0].innerHTML = date();
+    div.getElementsByTagName("i")[1].classList.remove('fa-circle');
+    div.getElementsByTagName("i")[1].classList.add('fa-check-circle');
+    div.getElementsByClassName("datum")[0].innerHTML = getDate();
   }, t);
 }
 
-function date() {
+function getDate() {
 	var today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth()+1; //January is 0!
@@ -43,8 +50,55 @@ function date() {
 }
 
 
+
 function saveReturn() {
-	
+	var list = document.getElementById("list");
+  if(list.innerHTML.includes("fa-circle")){
+      swal({
+        title: "Föremål saknas",
+        text: "Vill du skicka en påminnelse till kund?",
+        icon: "warning",
+        buttons: ["Nej", "Ja"]
+      }).then(() => {
+          swal({
+            title: "Retur sparad!",
+            text: "Påminnelse skickad.",
+            icon: "success",
+            button: "Ok"
+        }).then(()=> { location.href = 'returns.html'});
+      })
+    }else{
+      swal({
+        title: "Retur sparad!",
+        icon: "success",
+        button: "Ok"
+      }).then(()=> { location.href = 'returns.html'});
+    }
+
+    
+  }
+
+
+
+
+function checkOff(id, icon) {
+  console.log(id, icon);
+  var x = document.getElementById("btn"+id);
+  var y = document.getElementById("date"+id);
+
+  var iconTag = x.innerHTML;
+  console.log(iconTag.includes("check"));
+  var toggle;
+  var date;
+
+  toggle = iconTag.includes("check") ? "circle" : "check-circle";
+  date = iconTag.includes("check") ? "" : getDate();
+
+  console.log(toggle);
+
+  x.innerHTML = "<i class='far fa-"+ toggle +" status-icon'></i>"
+  y.innerHTML = date;
+
 }
 
 

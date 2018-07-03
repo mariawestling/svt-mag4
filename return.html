@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="returns-style.css">
+  <!-- Sweet Alerts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Script -->  
   <script src="returns-script.js"></script>
   <title>Return</title>
@@ -31,10 +33,10 @@
 		<div class="col-md-10">
 
 			<div class="row order-wrapper">
-				<div class="col-md-4">En Jättebra Film</br>1234</div>
-				<div class="col-md-4">Företag 1 AB</br>123456-7890</div>
+				<div class="col-md-4">{{name}}</br>{{production}}</div>
+				<div class="col-md-4">{{company}}</br>{{orgNr}}</div>
 				<div class="col-md-2">7</div>
-				<div class="col-md-2">2018-05-30</div>
+				<div class="col-md-2 utdatum">{{date}}</div>
 			</div>
 			<div class="row mb-3">
 			  	<div class="col-md-8">
@@ -44,186 +46,65 @@
 			</div>
 
 
-					<div class="row header-wrapper">
-						<div class="col-md-1">
+					<div class="row header-wrapper mt-3">
+						<div class="col-md-2">
 							ID
 						</div>
 						<div class="col-md-2">
 							Kategori
 						</div>	
-						<div class="col-md-3">
-							Underkategori
+						<div class="col-md-2">
+							Pris
 						</div>	
 						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-1">
+							Bild
+						</div>
+						<div class="col-md-3">
 							Återlämnad
-						</div>					
+						</div>						
 					</div>
 
-					<div class="row item-wrapper scan-item">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							
-						</div>							
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-
-					<div class="row item-wrapper scan-item">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							
-						</div>							
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper scan-item">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
-						</div>					
+					<div id="list">
+					  <!--content-->
 					</div>
 
+
+
+				<script id="template-list-item" type="text/template">
 					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
+						<div class="col-md-2">
+							{{id}}
 						</div>
 						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							
-						</div>							
+							{{category}}
+						</div>		
 						<div class="col-md-1">
-							<i class="far fa-circle status-icon"></i>
+							{{price}}
+						</div>	
+						<div class="col-md-1">
+							{{rent}}
+						</div>	
+						<div class="col-md-2 image"><i class="far fa-image"></i>
+						</div>
+						<div id="date{{id}}" class="col-md-3 datum">
+							{{returnDate}}
+						</div>	
+						<div class="col-md-1">
+							<button style="border: none;" id="btn{{id}}" onClick="checkOff({{id}} ,'{{icon}}')">
+								<i class="far fa-{{icon}} status-icon"></i>
+							</button>
 						</div>					
-					</div>	
-
-
-					<div class="row item-wrapper">
-						<b>Återlämnat:</b>
 					</div>
+				</script>
+							
 					
-
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							2018-06-01
-						</div>							
-						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
-						</div>					
-					</div>	
-
-					<div class="row item-wrapper">
-						<div class="col-md-1">
-							ID
-						</div>
-						<div class="col-md-2">
-							Kategori
-						</div>	
-						<div class="col-md-3">
-							Underkategori
-						</div>	
-						<div class="col-md-2">
-							Prisgrupp
-						</div>	
-						<div class="col-md-3 datum">
-							2018-06-01
-						</div>	
-						<div class="col-md-1">
-							<i class="far fa-check-circle status-icon"></i>
-						</div>					
-					</div>		
+						
 
 			<div class="row">
 				<div class="col-md-6">
 					<button onClick="scan()" class="check-btn scan">Starta scanning</button>
 				</div>
-				<div class="col-md-6">
-					<button onClick="check()" class="check-btn manuell">Bocka av manuellt</button>
-				</div>
+
 			</div>	
 			<div class="row">
 				<div class="col-md-12">
@@ -233,4 +114,34 @@
 		</div>
 	</div>
   </body>
+
+
+  <script>
+  	var objects = {
+	  			0: {"id":67,"category":"Soffa","price":9,"rent":"20%", "returnDate": "","icon":"circle"},
+	  			1: {"id":52,"category":"Stol","price":4,"returnDate": "","icon":"circle"},
+	  			2: {"id":17,"category":"Lampa","price":5,"returnDate": "","icon":"circle"},
+	  			3: {"id":84,"category":"Glas","price":2,"returnDate": "","icon":"circle"},
+	  			4: {"id":30,"category":"Telefon","price":6,"returnDate": "","icon":"circle"},
+	  			5: {"id":81,"category":"Matta","price":7,"rent":"10%","returnDate": "2018-07-02","icon":"check-circle"},
+	  			6: {"id":83,"category":"Matta","price":5,"rent":"10%","returnDate": "2018-07-02","icon":"check-circle"}
+			};
+
+		var template = document.getElementById("template-list-item");
+		var templateHtml = template.innerHTML;
+		var listHtml = "";
+
+		for (var key in objects) {
+		  listHtml += templateHtml.replace(/{{id}}/g, objects[key].id)
+		                          .replace(/{{category}}/g, objects[key].category)
+		                          .replace(/{{price}}/g, objects[key].price)
+		                          .replace(/{{rent}}/g, objects[key].rent)
+		                          .replace(/{{returnDate}}/g, objects[key].returnDate)
+		                          .replace(/{{icon}}/g, objects[key].icon);
+		}		
+		document.getElementById("list").innerHTML = listHtml;
+
+  </script>
+
+
 </html>

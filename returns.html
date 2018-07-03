@@ -155,9 +155,14 @@
   firebase.initializeApp(config);
 
 
-	firebase.database().ref('orders/').orderByChild('production').once('value').then(function(snapshot) {
+	firebase.database().ref('orders/').once('value').then(function(snapshot) {
 	    // Object we’re working with
 		var dataObject = snapshot.val();
+		var arr = [];
+		for (var key in dataObject) {
+			arr.push(dataObject[key]);
+		}
+		arr.reverse();
 
 		// Cache of the template
 		var template = document.getElementById("template-list-item");
@@ -194,11 +199,11 @@
 
 
 		var num = 0;
-		for (var key in dataObject) {
-		  listHtml += templateHtml.replace(/{{company}}/g, dataObject[key].company)
-		                          .replace(/{{production}}/g, dataObject[key].production)
-		                          .replace(/{{contact}}/g, dataObject[key].contact)
-		                          .replace(/{{date}}/g, dataObject[key].returnDate)
+		for (var i = 0; i < arr.length; i++) {
+		  listHtml += templateHtml.replace(/{{company}}/g, arr[i].company)
+		                          .replace(/{{production}}/g, arr[i].production)
+		                          .replace(/{{contact}}/g, arr[i].contact)
+		                          .replace(/{{date}}/g, arr[i].returnDate)
 		                          .replace(/{{num}}/g, num)
 		                          .replace(/{{content}}/g, listHtml2);
 			num++;
