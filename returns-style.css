@@ -32,7 +32,7 @@ body {
 }
 
 .item-wrapper {
-  border-top: 1px solid #f0f0f0; 
+  border-top: 1px solid #f0f0f0;
   padding: 5px 0;
   font-size: 16pt;
   font-weight: 200;
@@ -48,7 +48,7 @@ a:link {
   height: 60px;
   border-radius: 5px;
   border: none;
-  background-color: #5196B8;
+  background-color: #4ABDAC;
   margin-bottom: 10px;
   color: #fff;
   letter-spacing:2px;
@@ -58,14 +58,14 @@ a:link {
 
 .status-icon {
   font-size: 28pt;
-  position: 
+  position:
 }
 
 .fa-circle {
   color: #dcdcdc;
 }
 
-.fa-check-circle { 
+.fa-check-circle {
   color: #6dce6a;
 }
 

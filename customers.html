@@ -2,16 +2,29 @@
 <html>
 <head>
   <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="customers.css">
+  <link rel="stylesheet" href="returns-style.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 
   <!-- Sweet Alerts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+  <!-- Script -->
+  <script src="returns-script.js"></script>
+
   <title>Customer</title>
 </head>
   <body>
@@ -25,8 +38,123 @@
         <button class="fas fa-bars iconbuttons"></button>
       </div>
     </div>
+    <div class="row justify-content-md-center">
+			<div class="col-md-10">
+        <div class="show" id="existing">
+  				<div class="option-bar">
+            <div class="search-container">
+              <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <button type="button" class="btn btn-warning btn-circle btn-xl" onClick="hideExisting('existing')"><span class="glyphicon glyphicon-plus"></span></button>
+  				</div>
+    				<div class="row header-wrapper">
+    					<div class="col-md-4">Produktion</div>
+    					<div class="col-md-3">Företag</div>
+    					<div class="col-md-3">Kontaktperson</div>
+    				</div>
+
+    			  <div id="list">
+    			       <!--Generated list items will go here-->
+    			  </div>
+
+      			<script id="template-list-item" type="text/template">
+
+      				<a data-toggle="collapse" href="#collapse{{num}}" role="button" aria-expanded="false" aria-controls="collapse{{num}}">
+      					<div class="row order-wrapper">
+      						<div class="col-md-4">{{production}}</div>
+      						<div class="col-md-3">{{company}}</div>
+      						<div class="col-md-3">{{name}}</div>
+      					</div>
+      				</a>
+
+      				<div class="collapse" id="collapse{{num}}">
+      				  <div class="details-wrapper">
+      				  	<div class="row company-thumbnail">
+      					  	<div class="col-md-9 company-details">
+                      <div class="company-details-box">
+      							     <span><b>Kontaktperson:</b></span></br>
+      							          {{name}} &emsp;&emsp;&#124;&emsp;&emsp; {{phone}} &emsp;&emsp;&#124;&emsp;&emsp; {{email}}
+                      </div>
+                      <div class="company-details-box">
+                        <span><b>Organisationsnr:</b></span></br>
+                           5803-294820
+                      </div>
+                      <div class="company-details-box date-added" style="color:#9099A2">
+                         <span><b>Tillagd:</b></span>
+                            2017-09-04
+                      </div>
+                  </div>
+      						<div class="col-md-3 company-options">
+      		            <button onClick="" class="retur-btn">ÄNDRA</button>
+      		            <button onClick="handleReturn()" class="retur-btn">RETUR</button>
+      						</div>
+      					</div>
+      				</div>
+      			</div>
+  			  </script>
+          <script id="template-objects" type="text/template">
+    					<div class="row item-wrapper">
+    						<div class="col-md-2">
+    							{{id}}
+    						</div>
+    						<div class="col-md-2">
+    							{{category}}
+    						</div>
+    						<div class="col-md-2">
+    							{{price}}
+    						</div>
+    						<div class="col-md-2 image"><i class="far fa-image"></i>
+    						</div>
+    						<div class="col-md-3">
+    							{{returnDate}}
+    						</div>
+    						<div class="col-md-1">
+    							<i class="far fa-circle status-icon"></i>
+    						</div>
+    					</div>
+    			</script>
+        </div>
+        <div class="hidden" id="new">
+          <div class="new-header">
+            <span>NY KUND</span>
+            <button class="btn cancel-button">AVBRYT</button>
+          </div>
+          <div class="new-details">
+            <div class="new-detail">
+              <span><b>Företag</b></span>
+              <input id="new-company"/>
+            </div>
+            <div class="new-detail">
+              <span><b>Organisationsnummer</b></span>
+              <input id="new-orgnr" />
+            </div>
+            <div class="new-detail">
+              <span><b>Produktion</b></span>
+              <input id="new-production" />
+            </div>
+            <div class="new-detail">
+              <span><b>Kontaktperson</b></span>
+              <input id="new-name" />
+            </div>
+            <div class="new-detail">
+              <span><b>Telefonnummer</b></span>
+              <input id="new-phone"/>
+            </div>
+            <div class="new-detail">
+              <span><b>Mailadress</b></span>
+              <input id="new-email"/>
+            </div>
+          </div>
+          <button class="btn save-button" onClick="saveContact()">SPARA</button>
+        </div>
+  		</div>
+  </div>
   </body>
   <script>
+
     function handleClick(whereTo) {
       location.href = whereTo;
     }
@@ -37,5 +165,123 @@
         text: "Här är tanken att det ska finnas instruktioner att söka på gällande processen"
       })
     }
+
+    function hideExisting() {
+      toggleHidden("existing");
+      console.log("existing");
+      console.log("Hej");
+      toggleHidden("new");
+      console.log("new");
+    }
+
+    function toggleHidden(id) {
+      console.log("toggleHidden id", id);
+      var hidden = document.getElementById(id);
+      console.log("hidden", hidden.className);
+      if (hidden.className === "show") {
+        hidden.className = hidden.className.replace("show", "hidden");
+      } else {
+        hidden.className = hidden.className.replace("hidden", "show");
+      }
+      console.log("hidden", hidden.className);
+      return
+    }
+
+    /* ******* DATABASE ******* */
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDoWMxKEeSbiVMr-5e45l_vEr7DZ2wuq6o",
+      authDomain: "svt-mag4.firebaseapp.com",
+      databaseURL: "https://svt-mag4.firebaseio.com",
+      projectId: "svt-mag4",
+      storageBucket: "svt-mag4.appspot.com",
+      messagingSenderId: "591272820135"
+    };
+
+    firebase.initializeApp(config);
+
+    firebase.database().ref('customers/').once('value').then(function(snapshot) {
+      // Object we’re working with
+  		var dataCustomer = snapshot.val();
+      console.log("dataObject", dataCustomer);
+
+      // Cache of the template
+  		var template = document.getElementById("template-list-item");
+
+
+  		// Get the contents of the template
+  		var templateHtml = template.innerHTML;
+
+  		// Final HTML variable as empty string
+  		var listHtml = "";
+
+  		// Loop through dataObject, replace placeholder tags
+  		// with actual data, and generate final HTML
+
+  		var objects = {
+  	  			0: {"id":67,"category":"Soffa","price":9,"returnDate": "2018-06-20"},
+  	  			1: {"id":52,"category":"Stol","price":4,"returnDate": "2018-06-20"},
+  	  			2: {"id":17,"category":"Lampa","price":5,"returnDate": "2018-06-20"},
+  	  			3: {"id":84,"category":"Glas","price":2,"returnDate": "2018-06-20"},
+  	  			4: {"id":30,"category":"Telefon","price":6,"returnDate": "2018-06-20"},
+  	  			5: {"id":81,"category":"Matta","price":7,"returnDate": "2018-06-20"},
+  	  			6: {"id":83,"category":"Matta","price":5,"returnDate": "2018-06-20"}
+  			};
+
+  		var template2 = document.getElementById("template-objects");
+
+  		var templateHtml2 = template2.innerHTML;
+  		var listHtml2 = "";
+
+  		for (var key in objects) {
+  		  listHtml2 += templateHtml2.replace(/{{id}}/g, objects[key].id)
+  		                          .replace(/{{category}}/g, objects[key].category)
+  		                          .replace(/{{price}}/g, objects[key].price)
+  		                          .replace(/{{returnDate}}/g, objects[key].returnDate);
+  		}
+
+
+  		var num = 0;
+  		for (var keys = Object.keys(dataCustomer), i = keys.length, end = 0; i > end; i--) {
+        console.log("keys", keys[i-1]);
+        console.log("i", i);
+        var key = keys[i-1], value = dataCustomer[key-1];
+  		  listHtml += templateHtml.replace(/{{company}}/g, dataCustomer[key].company)
+  		                          .replace(/{{production}}/g, dataCustomer[key].production)
+  		                          .replace(/{{email}}/g, dataCustomer[key].email)
+  		                          .replace(/{{name}}/g, dataCustomer[key].name)
+  		                          .replace(/{{phone}}/g, dataCustomer[key].phone)
+                                .replace(/{{num}}/g, num)
+  		                          .replace(/{{content}}/g, listHtml2);
+        console.log("num", num);
+        num++;
+  		}
+
+  		// Replace the HTML of #list with final HTML
+  		document.getElementById("list").innerHTML = listHtml;
+
+    });
+
+    function saveContact() {
+      var company = document.getElementById('new-company').value;
+      var production = document.getElementById('new-production').value;
+      var name = document.getElementById('new-name').value;
+      var orgnr = document.getElementById('new-orgnr').value;
+      var phone = document.getElementById('new-phone').value;
+      var email = document.getElementById('new-email').value;
+
+      firebase.database().ref('customers/').push({  //byt ut “orders/” mot “customers/”
+  		    company: company,
+  		    production: production,
+  		    name: name,
+  		    orgNr: orgnr,
+          phone: phone,
+          email: email
+  		});
+
+      location.href = "customers.html";
+
+    }
+
   </script>
 </html>
