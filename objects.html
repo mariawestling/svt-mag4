@@ -40,8 +40,8 @@
         <button class="fas fa-bars iconbuttons"></button>
       </div>
     </div>
-    <div class="row justify-content-xs-center">
-      <div class="col-xs-10">
+    <div class="row justify-content-md-center">
+      <div class="col-md-10">
         <div class="show" id="existing">
           <div class="option-bar">
             <div class="search-container">
@@ -65,12 +65,12 @@
           </div>
           <div class="show" id="kostym-dept">
             <div class="row header-wrapper">
-    					<div class="col-xs-1">Id</div>
-    					<div class="col-xs-3">Kategori</div>
-    					<div class="col-xs-2">Värde</div>
-              <div class="col-xs-2">Kön</div>
-              <div class="col-xs-2">Stolek</div>
-              <div class="col-xs-1">Bild</div>
+    					<div class="col-md-1">Id</div>
+    					<div class="col-md-3">Kategori</div>
+    					<div class="col-md-2">Värde</div>
+              <div class="col-md-2">Kön</div>
+              <div class="col-md-2">Stolek</div>
+              <div class="col-md-1">Bild</div>
     				</div>
             <div id="kostym-list">
     			       <!--Generated list items will go here-->
@@ -78,11 +78,11 @@
           </div>
           <div class="hidden" id="mobel-dept">
             <div class="row header-wrapper">
-    					<div class="col-xs-2">Id</div>
-    					<div class="col-xs-3">Kategori</div>
-    					<div class="col-xs-2">Värde</div>
-              <div class="col-xs-3">Material</div>
-              <div class="col-xs-2">Bild</div>
+    					<div class="col-md-2">Id</div>
+    					<div class="col-md-3">Kategori</div>
+    					<div class="col-md-2">Värde</div>
+              <div class="col-md-3">Material</div>
+              <div class="col-md-2">Bild</div>
     				</div>
             <div id="mobel-list">
     			       <!--Generated list items will go here-->
@@ -90,11 +90,11 @@
           </div>
           <div class="hidden" id="rekvisita-dept">
             <div class="row header-wrapper">
-    					<div class="col-xs-2">Id</div>
-    					<div class="col-xs-3">Kategori</div>
-    					<div class="col-xs-2">Värde</div>
-              <div class="col-xs-3">Material</div>
-              <div class="col-xs-2">Bild</div>
+    					<div class="col-md-2">Id</div>
+    					<div class="col-md-3">Kategori</div>
+    					<div class="col-md-2">Värde</div>
+              <div class="col-md-3">Material</div>
+              <div class="col-md-2">Bild</div>
     				</div>
             <div id="rekvisita-list">
     			       <!--Generated list items will go here-->
@@ -104,18 +104,18 @@
         <script id="template-list-item-kostym" type="text/template">
           <a data-toggle="collapse" href="#collapse{{num}}" role="button" aria-expanded="false" aria-controls="collapse{{num}}">
             <div class="row order-wrapper">
-              <div class="col-xs-1">-</div>
-    					<div class="col-xs-3">{{category}}</div>
-    					<div class="col-xs-2">{{price}}</div>
-              <div class="col-xs-2">{{gender}}</div>
-              <div class="col-xs-2">{{size}}</div>
-              <div class="col-xs-1">-</div>
+              <div class="col-md-1"></div>
+    					<div class="col-md-3">{{category}}</div>
+    					<div class="col-md-2">{{price}}</div>
+              <div class="col-md-2">{{gender}}</div>
+              <div class="col-md-2">{{size}}</div>
+              <div class="col-md-1">-</div>
             </div>
           </a>
           <div class="collapse" id="collapse{{num}}">
             <div class="details-wrapper">
               <div class="row company-thumbnail">
-                <div class="col-xs-9 company-details">
+                <div class="col-md-9 company-details">
                   <div class="company-details-box">
                      <span><b>Kontaktperson:</b></span></br>
                           {{name}} &emsp;&emsp;&#124;&emsp;&emsp; {{phone}} &emsp;&emsp;&#124;&emsp;&emsp; {{email}}
@@ -129,7 +129,7 @@
                         2017-09-04
                   </div>
                 </div>
-                <div class="col-xs-3 company-options">
+                <div class="col-md-3 company-options">
                     <button onClick="" class="retur-btn">ÄNDRA</button>
                     <button onClick="handleReturn()" class="retur-btn">TA BORT</button>
                 </div>
