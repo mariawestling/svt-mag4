@@ -61,7 +61,7 @@
 			<script id="template-list-item" type="text/template">
 				<a data-toggle="collapse" href="#collapse{{num}}" role="button" aria-expanded="false" aria-controls="collapse{{num}}">
 					<div class="row order-wrapper">
-						<div class="col-md-4">{{name}}</br>{{production}}</div>
+						<div class="col-md-4">{{production}}</div>
 						<div class="col-md-4">{{company}}</br>{{orgNr}}</div>
 						<div class="col-md-2">7</div>
 						<div class="col-md-2 utdatum">{{date}}</div>
@@ -204,6 +204,7 @@
 		                          .replace(/{{production}}/g, arr[i].production)
 		                          .replace(/{{contact}}/g, arr[i].contact)
 		                          .replace(/{{date}}/g, arr[i].returnDate)
+		                          .replace(/{{orgNr}}/g, "123456-7890")
 		                          .replace(/{{num}}/g, num)
 		                          .replace(/{{content}}/g, listHtml2);
 			num++;

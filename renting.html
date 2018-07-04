@@ -35,12 +35,18 @@
       </div>
     </div>
     <div class="renting-options">
-        <button class="btn btn-primary active" id="oneFolje" onClick="oneRenting()">Ny följesedel</button>
-        <button class="btn btn-primary" id="allFolje" onClick="allRenting()">Följesedlar</button>
+        <button class="hidden btn btn-primary active" id="oneFolje" onClick="oneRenting()">Ny följesedel</button>
+        <button class="hidden btn btn-primary" id="allFolje" onClick="allRenting()">Följesedlar</button>
     </div>
+
+      <div class="new-header">
+            <span>NY KUND</span>
+            <button onClick="backToOrders()" class="btn cancel-button">AVBRYT</button>
+        </div>
+
     <div class="nothingCSS" id="companyDetails">
       <div class="renting-slips">
-        <div class="renting-label">Företag</div>
+        <div class="renting-label" style="font-size: 20pt;"><b>Företag</b></div>
         <div class="dropdown">
           <input class="" style="margin: 0px;" id="companyButton" data-toggle="dropdown" placeholder="Välj företag..."></input>
           <ul class="dropdown-menu">
@@ -51,7 +57,7 @@
         </div>
       </div>
       <div class="renting-slips">
-        <div class="renting-label">Produktion</div>
+        <div class="renting-label" style="font-size: 20pt;"><b>Produktion</b></div>
         <div class="dropdown">
           <input class="" style="margin: 0px;" id="productionButton" data-toggle="dropdown" placeholder="Välj produktion..."></input>
           <ul class="dropdown-menu">
@@ -62,7 +68,7 @@
         </div>
       </div>
       <div class="renting-slips">
-        <div class="renting-label">Kontaktperson</div>
+        <div class="renting-label" style="font-size: 20pt;"><b>Kontaktperson</b></div>
         <div class="dropdown">
           <input class="" style="margin: 0px;" id="contactButton" data-toggle="dropdown" placeholder="Välj kontaktperson..."></input>
           <ul class="dropdown-menu">
@@ -72,7 +78,7 @@
         </div>
       </div>
       <div class="renting-slips">
-        <div class="renting-label">Beräknad retur</div>
+        <div class="renting-label" style="font-size: 20pt;"><b>Beräknad retur</b></div>
         <form action="">
           <input id="date" type="date">
           </input>
@@ -128,11 +134,11 @@
         <textarea></textarea>
       </div>
       <div class="items-options">
-        <button class="renting-butts scan" onClick="showItems()">Starta Scanning</button>
-        <button class="renting-butts manual" onClick="addManually()">Lägg till Manuellt</button>
+        <button class="renting-butts scan" onClick="showItems()" style="font-weight: 400;">Starta Scanning</button>
+        <button class="renting-butts manual" onClick="addManually()" style="font-weight: 400;">Lägg till Manuellt</button>
       </div>
       <div class="items-options">
-        <button class="renting-butts save" onClick="saveFoljesedel()">Spara</button>
+        <button class="renting-butts save" onClick="saveFoljesedel()" style="font-weight: 400;">Spara</button>
       </div>
     </div>
     <div class="foljesedlar-info hidden row justify-content-md-center" id="allRents">
@@ -637,6 +643,12 @@
         title: "Instruktioner",
         text: "Här är tanken att det ska finnas instruktioner att söka på gällande processen"
       })
+    }
+
+
+
+    function backToOrders(){
+      location.href = 'returns.html';
     }
   </script>
 </html>

@@ -63,10 +63,12 @@ a:link {
 
 .fa-circle {
   color: #dcdcdc;
+  background-color: #fafafa;
 }
 
 .fa-check-circle {
   color: #6dce6a;
+  background-color: #fafafa;
 }
 
 
@@ -82,7 +84,7 @@ a:link {
 }
 
 .scan {
-  background-color: #6F958A;
+  background-color: #EFAC56;
   color: white;
 }
 
@@ -92,7 +94,7 @@ a:link {
 }
 
 .spara {
-  background-color: #5196B8;
+  background-color: #4ABDAC;
   color: white;
 }
 
@@ -113,6 +115,7 @@ select {
   font-size: 55pt;
   color: #EFAC56;
   border: none;
+  background-color: #fff;
 }
 
 
