@@ -93,12 +93,12 @@ input.form-control {
   margin-bottom: 40px;
   background-color: #4ABDAC;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   letter-spacing: 2px;
 }
 
 .objects-kostym, .objects-mobel, .objects-rekvisita {
-  width: 33.3%;
+  width: 33.2%;
   text-align: center;
   padding: 4px;
 }
