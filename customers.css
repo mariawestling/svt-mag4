@@ -105,17 +105,16 @@ input[type=text] {
   width: 54px;
 }
 
-.fa-search {
-}
-
-
-
 .search-container button:hover {
   background: #DFDCE3;
 }
 
 .search-container form{
   border-radius: 2px;
+}
+
+.header-wrapper {
+  font-size: 24px;
 }
 
 .company-thumbnail {

@@ -2,19 +2,31 @@
 <html>
 <head>
   <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
   <!-- Stylesheet -->
+  <link rel="stylesheet" href="returns-style.css">
+  <link rel="stylesheet" href="customers.css">
   <link rel="stylesheet" href="objects.css">
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 
   <!-- Sweet Alerts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
   <title>Objects</title>
 </head>
   <body>
@@ -28,27 +40,345 @@
         <button class="fas fa-bars iconbuttons"></button>
       </div>
     </div>
-    <div class="objects-window">
-      <div class="objects-options">
-        <button class="btn btn-primary register-object" id="register-button" onClick="hideAll()">Registrera objekt</button>
-        <button class="btn btn-primary all-objects" onClick="hideNew()">Alla objekt</button>
+    <div class="row justify-content-xs-center">
+      <div class="col-xs-10">
+        <div class="show" id="existing">
+          <div class="option-bar">
+            <div class="search-container">
+              <form action="">
+                <input type="text" placeholder="Sök..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <button type="button" class="btn btn-warning btn-circle btn-xl" onClick="hideExisting('existing')"><span class="glyphicon glyphicon-plus"></span></button>
+  				</div>
+          <div class="objects-avdelning row" id="objects-register-new">
+            <div class="objects-kostym active" id="kostym" onClick="toggleActive('kostym')">
+              KOSTYM
+            </div>
+            <div class="objects-mobel" id="mobel" onClick="toggleActive('mobel')">
+              MÖBEL
+            </div>
+            <div class="objects-rekvisita" id="rekvisita" onClick="toggleActive('rekvisita')">
+              REKVISITA
+            </div>
+          </div>
+          <div class="show" id="kostym-dept">
+            <div class="row header-wrapper">
+    					<div class="col-xs-1">Id</div>
+    					<div class="col-xs-3">Kategori</div>
+    					<div class="col-xs-2">Värde</div>
+              <div class="col-xs-2">Kön</div>
+              <div class="col-xs-2">Stolek</div>
+              <div class="col-xs-1">Bild</div>
+    				</div>
+            <div id="kostym-list">
+    			       <!--Generated list items will go here-->
+    			  </div>
+          </div>
+          <div class="hidden" id="mobel-dept">
+            <div class="row header-wrapper">
+    					<div class="col-xs-2">Id</div>
+    					<div class="col-xs-3">Kategori</div>
+    					<div class="col-xs-2">Värde</div>
+              <div class="col-xs-3">Material</div>
+              <div class="col-xs-2">Bild</div>
+    				</div>
+            <div id="mobel-list">
+    			       <!--Generated list items will go here-->
+    			  </div>
+          </div>
+          <div class="hidden" id="rekvisita-dept">
+            <div class="row header-wrapper">
+    					<div class="col-xs-2">Id</div>
+    					<div class="col-xs-3">Kategori</div>
+    					<div class="col-xs-2">Värde</div>
+              <div class="col-xs-3">Material</div>
+              <div class="col-xs-2">Bild</div>
+    				</div>
+            <div id="rekvisita-list">
+    			       <!--Generated list items will go here-->
+    			  </div>
+          </div>
+        </div>
+        <script id="template-list-item-kostym" type="text/template">
+          <a data-toggle="collapse" href="#collapse{{num}}" role="button" aria-expanded="false" aria-controls="collapse{{num}}">
+            <div class="row order-wrapper">
+              <div class="col-xs-1">-</div>
+    					<div class="col-xs-3">{{category}}</div>
+    					<div class="col-xs-2">{{price}}</div>
+              <div class="col-xs-2">{{gender}}</div>
+              <div class="col-xs-2">{{size}}</div>
+              <div class="col-xs-1">-</div>
+            </div>
+          </a>
+          <div class="collapse" id="collapse{{num}}">
+            <div class="details-wrapper">
+              <div class="row company-thumbnail">
+                <div class="col-xs-9 company-details">
+                  <div class="company-details-box">
+                     <span><b>Kontaktperson:</b></span></br>
+                          {{name}} &emsp;&emsp;&#124;&emsp;&emsp; {{phone}} &emsp;&emsp;&#124;&emsp;&emsp; {{email}}
+                  </div>
+                  <div class="company-details-box">
+                    <span><b>Organisationsnr:</b></span></br>
+                       5803-294820
+                  </div>
+                  <div class="company-details-box date-added" style="color:#9099A2">
+                     <span><b>Tillagd:</b></span>
+                        2017-09-04
+                  </div>
+                </div>
+                <div class="col-xs-3 company-options">
+                    <button onClick="" class="retur-btn">ÄNDRA</button>
+                    <button onClick="handleReturn()" class="retur-btn">TA BORT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+
+<!-- ******** ADD NEW OBJECT ******** -->
+        <div class="hidden" id="new-add">
+          <div class="new-header">
+            <span>NYTT OBJEKT</span>
+            <button class="btn cancel-button">AVBRYT</button>
+          </div>
+          <div class="nothingCSS" id="register-new">
+            <div class="renting-slips">
+              <div class="renting-label">Avdelning</div>
+              <div class="dropdown">
+                <input class="" style="margin: 0px;" id="departmentButton" data-toggle="dropdown" placeholder="Välj avdelning..."></input>
+                <ul class="dropdown-menu">
+                  <li onClick="departmentChoice('kostym-specific', 'Kostym')">Kostym</li>
+                  <li onClick="departmentChoice('mobel-specific', 'Möbel')">Möbel</li>
+                  <li onClick="departmentChoice('rekvisita-specific', 'Rekvisita')">Rekvisita</li>
+                </ul>
+              </div>
+            </div>
+            <div class="hidden" id="kostym-specific">
+              <div class="renting-slips">
+                <div class="renting-label">Kategori</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="categoryButton" data-toggle="dropdown" placeholder="Välj kategori..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="categoryChoice('A: antik')">A: antik</li>
+                    <li onClick="categoryChoice('B: medeltid')">B: medeltid</li>
+                    <li onClick="categoryChoice('C: 1500-1600)">C: 1500-1600</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Kön</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="genderButton" data-toggle="dropdown" placeholder="Välj kön..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="genderChoice('Kvinna')">Kvinna</li>
+                    <li onClick="genderChoice('Man')">Man</li>
+                    <li onClick="genderChoice('Kille')">Kille</li>
+                    <li onClick="genderChoice('Tjej')">Tjej</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Plagg</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="clothingButton" data-toggle="dropdown" placeholder="Välj plagg..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="clothingChoice('Byxor')">Byxor</li>
+                    <li onClick="clothingChoice('Tröjor')">Tröjor</li>
+                    <li onClick="clothingChoice('Klänningar')">Klänningar</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Storlek</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="sizeButton" data-toggle="dropdown" placeholder="Välj storlek..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="sizeChoice('34')">34</li>
+                    <li onClick="sizeChoice('36')">36</li>
+                    <li onClick="sizeChoice('38')">38</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Prisgrupp</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="priceButton" data-toggle="dropdown" placeholder="Välj prisgrupp..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="priceChoice('1: 0-50')">1: 0-50</li>
+                    <li onClick="priceChoice('2: 100-300')">2: 50-100</li>
+                    <li onClick="priceChoice('3: 100-300')">3: 100-300</li>
+                    <li onClick="priceChoice('4: 300-500')">4: 300-500</li>
+                    <li onClick="priceChoice('5: 500-600')">5: 500-600</li>
+                    <li onClick="priceChoice('6: 600-700')">6: 600-700</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOBEL -->
+            <div class="hidden" id="mobel-specific">
+              <div class="renting-slips">
+                <div class="renting-label">Kategori</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="categoryButton1" data-toggle="dropdown" placeholder="Välj kategori..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="categoryChoice1('Soffor')">Soffor</li>
+                    <li onClick="categoryChoice1('Stolar')">Stolar</li>
+                    <li onClick="categoryChoice1('Bord)">Bord</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Material</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="materialButton" data-toggle="dropdown" placeholder="Välj material..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="materialChoice('Brun trä')">Brunmålat trä</li>
+                    <li onClick="materialChoice('Siden')">Siden</li>
+                    <li onClick="materialChoice('Vitbets')">Vitbets</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Prisgrupp</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="priceButton1" data-toggle="dropdown" placeholder="Välj prisgrupp..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="priceChoice1('1: 0-50')">1: 0-50</li>
+                    <li onClick="priceChoice1('2: 100-300')">2: 50-100</li>
+                    <li onClick="priceChoice1('3: 100-300')">3: 100-300</li>
+                    <li onClick="priceChoice1('4: 300-500')">4: 300-500</li>
+                    <li onClick="priceChoice1('5: 500-600')">5: 500-600</li>
+                    <li onClick="priceChoice1('6: 600-700')">6: 600-700</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- REKVISITA -->
+            <div class="hidden" id="rekvisita-specific">
+              <div class="renting-slips">
+                <div class="renting-label">Kategori</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="category2Button" data-toggle="dropdown" placeholder="Välj kategori..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="categoryChoice2('Kök')">Kök</li>
+                    <li onClick="categoryChoice2('Tavlor')">Tavlor</li>
+                    <li onClick="categoryChoice2('Lampskärmar')">Lampskärmar</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Material</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="materialButton" data-toggle="dropdown" placeholder="Välj material..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="materialChoice('Brun trä')">Antik</li>
+                    <li onClick="materialChoice('Siden')">Siden</li>
+                    <li onClick="materialChoice('Vitbets')">Stor skärm</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="renting-slips">
+                <div class="renting-label">Prisgrupp</div>
+                <div class="dropdown">
+                  <input class="" style="margin: 0px;" id="priceButton2" data-toggle="dropdown" placeholder="Välj prisgrupp..."></input>
+                  <ul class="dropdown-menu">
+                    <li onClick="priceChoice2('1: 0-50')">1: 0-50</li>
+                    <li onClick="priceChoice2('2: 100-300')">2: 50-100</li>
+                    <li onClick="priceChoice2('3: 100-300')">3: 100-300</li>
+                    <li onClick="priceChoice2('4: 300-500')">4: 300-500</li>
+                    <li onClick="priceChoice2('5: 500-600')">5: 500-600</li>
+                    <li onClick="priceChoice2('6: 600-700')">6: 600-700</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="camera-choice">
+              <button class="btn btn-primary register-object">Ta bild</button>
+              <button class="btn btn-primary register-object">Scanna RFID-tagg</button>
+            </div>
+            <button class="btn save-button" onClick="saveObject()">SPARA</button>
+          </div>
+
+
+
+          <div class="objects-all hidden" id="objects-registered">
+            <table class="table table-foljesedlar">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Prisgrupp</th>
+                    <th scope="col">Storlek</th>
+                    <th scope="col">Bild</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>A: antik</td>
+                    <td class="center">9</td>
+                    <td>40</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A: antik</td>
+                    <td class="center">5</td>
+                    <td>42</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A: antik</td>
+                    <td class="center">5</td>
+                    <td>34</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A: antik</td>
+                    <td class="center">5</td>
+                    <td>50</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A: antik</td>
+                    <td class="center">5</td>
+                    <td>44</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A: antik</td>
+                    <td class="center">5</td>
+                    <td>38</td>
+                    <td class="image"><i class="far fa-image"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
 <!--
-        <div class="input-group input-group-lg col-md-5 mb-3 mt-3">
-          <input type="text" class="form-control" onClick="fromActive()" placeholder="Sök..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        </div>
--->
-      </div>
-      <div class="objects-avdelning" id="objects-register-new">
-        <div class="objects-kostym active" id="kostym" onClick="toggleActive('kostym')">
-          KOSTYM
-        </div>
-        <div class="objects-mobel" id="mobel" onClick="toggleActive('mobel')">
-          MÖBEL
-        </div>
-        <div class="objects-rekvisita" id="rekvisita" onClick="toggleActive('rekvisita')">
-          REKVISITA
-        </div>
-      </div>
+    <div class="objects-window">
+
+
       <div class="nothingCSS" id="register-new">
 
         <div class="renting-slips">
@@ -172,7 +502,7 @@
               </tr>
             </tbody>
           </table>
-      </div>
+      </div> -->
     </div>
   </body>
   <script>
@@ -199,18 +529,79 @@
 
   var oldActiveID = "kostym";
   function toggleActive(avdelning) {
-    console.log(oldActiveID);
     var deact = document.getElementById(oldActiveID);
     deact.className = deact.className.replace(" active", "");
 
     var activate = document.getElementById(avdelning);
     activate.className += " active";
-
+    showDepartmentDetails(oldActiveID, avdelning);
     oldActiveID = avdelning;
+  }
+
+  var currentDeparment = "kostym";
+  function showDepartmentDetails(oldID, newID){
+    currentDeparment = newID;
+
+    var oldDept = oldID+"-dept";
+    var newDept = newID+"-dept";
+
+    var hide = document.getElementById(oldDept);
+    hide.className = hide.className.replace("show", "hidden");
+
+    var show = document.getElementById(newDept);
+    show.className = show.className.replace("hidden", "show");
+
+  }
+
+  function hideExisting() {
+    toggleHidden("existing");
+    console.log("existing");
+    console.log("Hej");
+    toggleHidden("new-add");
+    console.log("new");
+  }
+
+  function toggleHidden(id) {
+    console.log("toggleHidden id", id);
+    var hidden = document.getElementById(id);
+    console.log("hidden", hidden.className);
+    if (hidden.className === "show") {
+      hidden.className = hidden.className.replace("show", "hidden");
+    } else {
+      hidden.className = hidden.className.replace("hidden", "show");
+    }
+    console.log("hidden", hidden.className);
+    return
+  }
+
+  var currentDept = "kostym-specific"
+
+  function departmentChoice(dept, department) {
+      var hide = document.getElementById(currentDept);
+      hide.className = hide.className.replace("show", "hidden");
+
+      var show = document.getElementById(dept);
+      show.className = show.className.replace("hidden", "show");
+
+      var compButton = document.getElementById('departmentButton');
+      compButton.placeholder = compButton.placeholder.replace("Välj avdelning...", department);
+      console.log(compButton.placeholder);
   }
 
   function categoryChoice(category) {
     var compButton = document.getElementById('categoryButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj kategori...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function categoryChoice1(category) {
+    var compButton = document.getElementById('categoryButton1');
+    compButton.placeholder = compButton.placeholder.replace("Välj kategori...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function categoryChoice2(category) {
+    var compButton = document.getElementById('categoryButton2');
     compButton.placeholder = compButton.placeholder.replace("Välj kategori...", category);
     console.log(compButton.placeholder);
   }
@@ -239,6 +630,24 @@
     console.log(compButton.placeholder);
   }
 
+  function priceChoice1(category) {
+    var compButton = document.getElementById('priceButton1');
+    compButton.placeholder = compButton.placeholder.replace("Välj prisgrupp...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function priceChoice2(category) {
+    var compButton = document.getElementById('priceButton2');
+    compButton.placeholder = compButton.placeholder.replace("Välj prisgrupp...", category);
+    console.log(compButton.placeholder);
+  }
+
+  function materialChoice(category) {
+    var compButton = document.getElementById('materialButton');
+    compButton.placeholder = compButton.placeholder.replace("Välj material...", category);
+    console.log(compButton.placeholder);
+  }
+
   function hideAll() {
     var allObjects = document.getElementById('objects-registered');
     allObjects.className += " hidden";
@@ -253,6 +662,132 @@
 
     var allObjects = document.getElementById('objects-registered');
     allObjects.className = allObjects.className.replace(" hidden", "");
+  }
+
+  /* ******* DATABASE ******* */
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDoWMxKEeSbiVMr-5e45l_vEr7DZ2wuq6o",
+    authDomain: "svt-mag4.firebaseapp.com",
+    databaseURL: "https://svt-mag4.firebaseio.com",
+    projectId: "svt-mag4",
+    storageBucket: "svt-mag4.appspot.com",
+    messagingSenderId: "591272820135"
+  };
+
+  firebase.initializeApp(config);
+
+  firebase.database().ref('objects/').once('value').then(function(snapshot) {
+    // Object we’re working with
+    var dataObjects = snapshot.val();
+    console.log("dataObject", dataObjects);
+
+    // Cache of the template
+    var template = document.getElementById("template-list-item-kostym");
+
+
+    // Get the contents of the template
+    var templateHtml = template.innerHTML;
+
+    // Final HTML variable as empty string
+    var listHtml = "";
+
+    // Loop through dataObject, replace placeholder tags
+    // with actual data, and generate final HTML
+
+    var objects = {
+          0: {"id":67,"category":"Soffa","price":9,"returnDate": "2018-06-20"},
+          1: {"id":52,"category":"Stol","price":4,"returnDate": "2018-06-20"},
+          2: {"id":17,"category":"Lampa","price":5,"returnDate": "2018-06-20"},
+          3: {"id":84,"category":"Glas","price":2,"returnDate": "2018-06-20"},
+          4: {"id":30,"category":"Telefon","price":6,"returnDate": "2018-06-20"},
+          5: {"id":81,"category":"Matta","price":7,"returnDate": "2018-06-20"},
+          6: {"id":83,"category":"Matta","price":5,"returnDate": "2018-06-20"}
+      };
+
+    // var template2 = document.getElementById("template-objects");
+    //
+    // var templateHtml2 = template2.innerHTML;
+    // var listHtml2 = "";
+    //
+    // for (var key in objects) {
+    //   listHtml2 += templateHtml2.replace(/{{id}}/g, objects[key].id)
+    //                           .replace(/{{category}}/g, objects[key].category)
+    //                           .replace(/{{price}}/g, objects[key].price)
+    //                           .replace(/{{returnDate}}/g, objects[key].returnDate);
+    // }
+
+
+    var num = 0;
+    for (var keys = Object.keys(dataObjects), i = keys.length, end = 0; i > end; i--) {
+      console.log("keys", keys[i-1]);
+      console.log("i", i);
+      var key = keys[i-1], value = dataObjects[key-1];
+      listHtml += templateHtml.replace(/{{department}}/g, dataObjects[key].department)
+                              .replace(/{{category}}/g, dataObjects[key].category)
+                              .replace(/{{gender}}/g, dataObjects[key].gender)
+                              .replace(/{{clothing}}/g, dataObjects[key].clothing)
+                              .replace(/{{size}}/g, dataObjects[key].size)
+                              .replace(/{{price}}/g, dataObjects[key].price)
+                              .replace(/{{num}}/g, num);
+
+      console.log("num", num);
+      num++;
+    }
+
+    // Replace the HTML of #list with final HTML
+    document.getElementById("kostym-list").innerHTML = listHtml;
+
+  });
+
+  function saveObject() {
+    if (currentDeparment === "kostym"){
+      var department = document.getElementById('departmentButton').placeholder;
+      var category = document.getElementById('categoryButton').placeholder;
+      var gender = document.getElementById('genderButton').placeholder;
+      var clothing = document.getElementById('clothingButton').placeholder;
+      var size = document.getElementById('sizeButton').placeholder;
+      var price = document.getElementById('priceButton').placeholder;
+
+      //var rented = document.getElementById('kostym-rented').value;
+
+      firebase.database().ref('objects/').push({  //byt ut “orders/” mot “customers/”
+          department: department,
+          category: category,
+          gender: gender,
+          clothing: clothing,
+          size: size,
+          price: price
+      });
+    } else if (currentDeparment === "mobel") {
+      var department = document.getElementById('departmentButton').placeholder;
+      var category = document.getElementById('categoryButton1').placeholder;
+      var material = document.getElementById('materialButton').placeholder;
+      var price = document.getElementById('priceButton1').placeholder;
+
+      firebase.database().ref('objects/').push({  //byt ut “orders/” mot “customers/”
+          department: department,
+          categorrt: production,
+          material: material,
+          price: price
+      });
+    } else {
+      var department = document.getElementById('departmentButton').placeholder;
+      var category = document.getElementById('categoryButton2').placeholder;
+      var material = document.getElementById('materialButton').placeholder;
+      var price = document.getElementById('priceButton2').placeholder;
+
+      firebase.database().ref('objects/').push({  //byt ut “orders/” mot “customers/”
+        department: department,
+        categorrt: production,
+        material: material,
+        price: price,
+        rented: rented
+      });
+    }
+
+    location.href = "objects.html";
+
   }
 
   </script>
