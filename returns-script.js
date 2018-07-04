@@ -8,7 +8,7 @@ function handleReturn() {
 
 function scan() {
   document.getElementsByClassName("scan")[0].innerHTML = "Scannar...";
-  document.getElementsByClassName("scan")[0].setAttribute("style", "background-color: red;");
+  document.getElementsByClassName("scan")[0].setAttribute("style", "background-color: #FC4A1A;");
 
 	var x = document.querySelectorAll(".item-wrapper");
 	var time = 1000;
@@ -69,13 +69,20 @@ function saveReturn() {
       })
     }else{
       swal({
+        title: "Alla föremål returnerade!",
+        text: "Vill du avsluta denna uthyrning?",
+        icon: "success",
+        buttons: ["Nej", "Ja"]
+      }).then(() => {
+      swal({
         title: "Retur sparad!",
+        text: "Uthyrning avslutad, faktura skickas.",
         icon: "success",
         button: "Ok"
       }).then(()=> { location.href = 'returns.html'});
-    }
+      })
 
-    
+    }    
   }
 
 
