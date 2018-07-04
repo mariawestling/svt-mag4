@@ -95,6 +95,7 @@ input.form-control {
   color: white;
   font-size: 22px;
   letter-spacing: 2px;
+  flex-wrap: nowrap;
 }
 
 .objects-kostym, .objects-mobel, .objects-rekvisita {
