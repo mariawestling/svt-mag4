@@ -49,9 +49,9 @@ body {
 
 
 .navButton {
-  background-color: #B0BEC5;
+  /* background-color: #B0BEC5;
   border-color: #B0BEC5;
-  color: #37474F;
+  color: #37474F; */
   width: 11em;
   font-size: 4em;
   font-weight: lighter;
@@ -63,4 +63,16 @@ body {
 
 .navButton:hover {
   background-color: #546E7A;
+}
+
+.renting-nav {
+  background-color: #4ABDAC;
+}
+
+.objects-nav {
+  background-color: #FC4A1A;
+}
+
+.customer-nav {
+  background-color: #F7B733;
 }

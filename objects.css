@@ -52,16 +52,16 @@ button.fa-home {
 
 .register-object, .all-objects {
   width: 40%;
-  font-weight: lighter;
+  /* font-weight: lighter; */
   font-size: 30px;
-  background-color: #5196B8;
+  background-color: #4ABDAC !important;
   padding: 1%;
   letter-spacing: 2px;
 }
 
 .register-object.active {
   width: 40%;
-  font-weight: lighter;
+  /* font-weight: lighter; */
   font-size: 30px;
   background-color: #6F8895 !important;
 }
@@ -79,7 +79,7 @@ input.form-control {
 }
 
 .form-control, input::placeholder, input{
-  font-weight: lighter;
+  /* font-weight: lighter; */
   font-size: 20px;
   padding: 4px;
   align-items: center;
@@ -90,11 +90,12 @@ input.form-control {
   align-items: center;
   justify-content: center;
   margin-top: 30px;
-  background-color: #9FCBBF;
+  margin-bottom: 40px;
+  background-color: #4ABDAC;
   color: white;
-  font-size: 30px;
-  font-weight: lighter;
+  font-size: 22px;
   letter-spacing: 2px;
+  flex-wrap: nowrap;
 }
 
 .objects-kostym, .objects-mobel, .objects-rekvisita {
@@ -104,8 +105,8 @@ input.form-control {
 }
 
 .active {
-  background-color: #6F958A;
-  border-color: #6F958A;
+  background-color: #D5D5D5;
+  border-color:  #D5D5D5;
   margin: 0px;
 }
 .nothingCSS {
@@ -126,7 +127,7 @@ input.form-control {
 .renting-label {
   width: 30%;
   font-size: 2.5em;
-  font-weight: lighter;
+  /* font-weight: lighter; */
 }
 .dropdown {
   width: 70%;
@@ -137,7 +138,7 @@ input.form-control {
   font-size: 24px;
 }
 
-input {
+.dropdown input {
   width: 100%;
   padding: 0.001em 0.001em 0.001em 0.001em;
   background-color: #ECEFF1;
@@ -145,12 +146,12 @@ input {
   border-style: none;
   text-align: left;
   color: black;
-  font-weight: lighter;
+  /* font-weight: lighter; */
   margin: 0px;
 }
 
-input::placeholder {
-  font-weight: lighter;
+.dropdown input::placeholder {
+  /* font-weight: lighter; */
   text-align: left;
   text-indent: 10px;
   color: black !important;
@@ -174,7 +175,7 @@ th {
 }
 
 .table {
-  font-weight: lighter;
+  /* font-weight: lighter; */
   width: 93%;
   font-size: 2em;
 }
@@ -197,10 +198,11 @@ th {
 }
 
 .btn-primary.register-object {
-  width: 51% !important;
+  width: 35% !important;
   font-size: 30px !important;
-  font-weight: lighter;
-  background-color: #5196B8;
+  /* font-weight: lighter; */
+  background-color: #DFDCE3 !important;
+  border-color: none !important;
   padding: 8px;
   color: white;
   letter-spacing: 2px;
@@ -214,4 +216,22 @@ th {
 
 .btn-primary.all-objects {
   width: 40%;
+}
+
+.cancel-button {
+  position: absolute;
+  right: 0;
+  background-color: #F7B733; /* #FC4A1A !important;*/
+  color: white;
+  width: 20%;
+  font-size: 28px;
+  padding: 3px;
+  margin-top: 5px;
+  line-height: 0.2;
+  letter-spacing: 1px;
+}
+
+.cancel-button:hover {
+  color: white;
+  box-shadow: none;
 }
